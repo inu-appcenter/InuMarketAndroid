@@ -6,13 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/logintxt"
+        android:layout_width="67dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="107dp"
+        android:gravity="center"
+        android:text="로그인"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stdidtxt"
+        android:layout_width="23dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="학번"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/logintxt"
+        app:layout_constraintTop_toBottomOf="@+id/logintxt" />
+
+    <EditText
+        android:id="@+id/idedittxt"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="6dp"
+        android:hint="입력"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stdidtxt" />
+
+    <TextView
+        android:id="@+id/pwtxt"
+        android:layout_width="45dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="비밀번호"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/logintxt"
+        app:layout_constraintTop_toBottomOf="@+id/idedittxt" />
+
+    <EditText
+        android:id="@+id/pwedittxt"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="38dp"
+        android:hint="입력"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/idedittxt"
+        app:layout_constraintTop_toBottomOf="@+id/idedittxt" />
+
+    <Button
+        android:id="@+id/joinbutton"
+        android:layout_width="168dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="41dp"
+        android:background="#00ff0000"
+        android:gravity="center"
+        android:text="*회원가입"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwedittxt"
+
+        />
+
+    <Button
+        android:id="@+id/lostpwbtn"
+        android:layout_width="168dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="41dp"
+        android:background="#00ff0000"
+        android:gravity="center"
+        android:text="*패스워드 분실"
+        android:textSize="12sp"
+        android:onClick="forgotpw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwedittxt" />
+
+    <ImageButton
+        android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#00ff0000"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/group" />
+
+    <TextView
+        android:id="@+id/diftxt"
+        android:layout_width="197dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:visibility="invisible"
+        android:text=" *학번과 일치하는 비밀번호가 아닙니다"
+        android:textColor="#fb3a2f"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lostpwbtn" />
+
 
 </android.support.constraint.ConstraintLayout>
