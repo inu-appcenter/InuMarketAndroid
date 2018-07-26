@@ -32,6 +32,8 @@ public class forgot_pw extends AppCompatActivity {
         String name = name_edit.getText().toString();
         String std_id = stdid_edit.getText().toString();
 
+
+        /*
         name_edit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
@@ -41,10 +43,10 @@ public class forgot_pw extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
                 String name = s.toString();
-                if(name.length()>=3)
-                    noinput_txt.setVisibility(View.INVISIBLE);
-                else
+                if(name.length()<2)
                     noinput_txt.setVisibility(View.VISIBLE);
+                else
+                    noinput_txt.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -61,29 +63,36 @@ public class forgot_pw extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-               String stdid = charSequence.toString();
-                if(stdid.length()==9)
-                    noinput_txt.setVisibility(View.INVISIBLE);
-                else
-                    noinput_txt.setVisibility(View.VISIBLE);
+
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void afterTextChanged(Editable s) {
+                String stdid = s.toString();
+                if(stdid.length()!=9)
+                    noinput_txt.setVisibility(View.VISIBLE);
+                else
+                    noinput_txt.setVisibility(View.INVISIBLE);
             }
         });
 
-
+        */
     }
 
     public void click_email(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(forgot_pw.this);
-        builder.setTitle("");
-        builder.setMessage("인천대 포탈 웹메일로 임시 비밀번호가 발송되었습니다!");
-        builder.setPositiveButton("확인",null);
-        builder.show();
+        String name = name_edit.getText().toString();
+        String stdid = stdid_edit.getText().toString();
+        if ((name.length() >= 2) && (stdid.length() == 9)) {
+            // 서버통신 추가
+            AlertDialog.Builder builder = new AlertDialog.Builder(forgot_pw.this);
+            builder.setTitle("");
+            builder.setMessage("인천대 포탈 웹메일로 임시 비밀번호가 발송되었습니다!");
+            builder.setPositiveButton("확인", null);
+            builder.show();
+            noinput_txt.setVisibility(View.INVISIBLE);
+        }
+        else
+            noinput_txt.setVisibility(View.VISIBLE);
     }
-
 }
 
