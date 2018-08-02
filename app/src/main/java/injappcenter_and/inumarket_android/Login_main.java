@@ -52,15 +52,15 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
 
     public void onClick(View v){
         switch(v.getId()) {
-            /*
+
             case R.id.btn_login_login:
             {
             //메인화면으로 전환
-            //    Intent intent_login = new Intent(getApplicationContext(),)
-            //    startActivity();
-
+                Intent intent_login = new Intent(getApplicationContext(), Main.class);
+                startActivity(intent_login);
+                break;
             }
-        */
+
             case R.id.btn_login_forgot_pw:
             {
                 Intent intent_pw = new Intent(getApplicationContext(), forgot_pw.class);
@@ -76,14 +76,5 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
             }*/
         }
     }
-
-
-
-    /*
-    public void join_click(View view) {
-        Intent intent = new Intent(getApplicationContext(),join.class);
-    }
-    */
-
 
 }

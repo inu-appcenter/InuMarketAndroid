@@ -12,10 +12,10 @@
         android:layout_height="36dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="107dp"
-        android:gravity="center"
         android:text="패스워드 분실"
         android:textColor="#475058"
         android:textSize="24sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,13 +23,11 @@
         android:id="@+id/txt_forgot_pw_name"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginTop="33.5dp"
-        android:layout_marginStart="27.6dp"
-        android:gravity="center"
+        android:layout_marginTop="32dp"
         android:text="이름"
         android:textColor="#475058"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_forgot_pw"
         app:layout_constraintTop_toBottomOf="@+id/txt_forgot_pw" />
 
     <EditText
@@ -37,10 +35,12 @@
         android:layout_width="335dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="2.5dp"
+        android:layout_marginTop="4dp"
         android:hint="입력"
         android:inputType="textPersonName"
-        android:textColor="#000000"
+        android:textColor="#4a4a4a"
+        android:background="#00ffffff"
+        android:textColorHint="#c4c4c4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,8 +51,7 @@
         android:id="@+id/txt_forgot_pw_stdid"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginTop="17.5dp"
-        android:gravity="left"
+        android:layout_marginTop="16dp"
         android:text="학번"
         android:textColor="#475058"
         android:textSize="12sp"
@@ -61,12 +60,14 @@
 
     <EditText
         android:id="@+id/et_forgot_pw_stdid"
-        android:layout_width="320dp"
+        android:layout_width="335dp"
         android:layout_height="48dp"
         android:layout_marginTop="38dp"
         android:hint="입력"
         android:inputType="number"
-        android:textColor="#000000"
+        android:textColor="#4a4a4a"
+        android:background="#00ffffff"
+        android:textColorHint="#c4c4c4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -76,7 +77,7 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginBottom="19.8dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_forgot_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -85,8 +86,7 @@
             android:id="@+id/txt_forgot_pw_noinput"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:layout_marginBottom="19.8dp"
-            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
             android:text="* 이름과 학번을 입력해주세요."
             android:textColor="#fb3a2f"
             android:textSize="12sp"
@@ -101,7 +101,6 @@
             android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal"
             android:text="* 이름과 학번이 일치하지 않습니다."
             android:textColor="#fb3a2f"
             android:textSize="12sp"
@@ -114,17 +113,26 @@
 
     <ImageButton
         android:id="@+id/btn_forgot_email"
-        android:layout_width="280dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="25.2dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:background="#00ff0000"
         android:onClick="click_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/group_2" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="113dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_mainpage" />
 
 
 

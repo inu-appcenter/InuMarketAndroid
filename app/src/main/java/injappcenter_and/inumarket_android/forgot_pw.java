@@ -32,57 +32,12 @@ public class forgot_pw extends AppCompatActivity {
         String name = name_edit.getText().toString();
         String std_id = stdid_edit.getText().toString();
 
-
-        /*
-        name_edit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                String name = s.toString();
-                if(name.length()<2)
-                    noinput_txt.setVisibility(View.VISIBLE);
-                else
-                    noinput_txt.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        stdid_edit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String stdid = s.toString();
-                if(stdid.length()!=9)
-                    noinput_txt.setVisibility(View.VISIBLE);
-                else
-                    noinput_txt.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        */
     }
 
     public void click_email(View view) {
         String name = name_edit.getText().toString();
         String stdid = stdid_edit.getText().toString();
-        if ((name.length() >= 2) && (stdid.length() == 9)) {
+        if ((name.length() > 2) && (stdid.length() == 9)) {
             // 서버통신 추가
             AlertDialog.Builder builder = new AlertDialog.Builder(forgot_pw.this);
             builder.setTitle("");
