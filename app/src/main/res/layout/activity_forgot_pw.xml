@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".forgot_pw">
 
     <TextView
@@ -39,7 +40,6 @@
         android:hint="입력"
         android:inputType="textPersonName"
         android:textColor="#4a4a4a"
-        android:background="#00ffffff"
         android:textColorHint="#c4c4c4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,6 @@
         android:hint="입력"
         android:inputType="number"
         android:textColor="#4a4a4a"
-        android:background="#00ffffff"
         android:textColorHint="#c4c4c4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
