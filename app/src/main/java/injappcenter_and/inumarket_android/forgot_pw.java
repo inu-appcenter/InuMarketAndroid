@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import injappcenter_and.inumarket_android.Model.LoginResult;
-import injappcenter_and.inumarket_android.Retrofit.LoginRetrofit;
+import injappcenter_and.inumarket_android.Retrofit.Singleton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

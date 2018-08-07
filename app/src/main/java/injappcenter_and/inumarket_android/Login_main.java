@@ -4,9 +4,7 @@ package injappcenter_and.inumarket_android;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,18 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.google.gson.JsonObject;
 
 import injappcenter_and.inumarket_android.Model.LoginResult;
-import injappcenter_and.inumarket_android.Retrofit.LoginRetrofit;
-import injappcenter_and.inumarket_android.Retrofit.LoginService;
+import injappcenter_and.inumarket_android.Retrofit.Singleton;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class Login_main extends AppCompatActivity implements View.OnClickListener{
 
@@ -72,7 +65,7 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
 
                 if((userid.length()==9)&&(userpw.length()>0)) {
                     errtxt_noinput.setVisibility(View.INVISIBLE);
-                    LoginRetrofit.retrofitLogin.login(userid, userpw).enqueue(new Callback<LoginResult>() {
+                    Singleton.retrofitLogin.login(userid, userpw).enqueue(new Callback<LoginResult>() {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                             if (response.isSuccessful()) {
