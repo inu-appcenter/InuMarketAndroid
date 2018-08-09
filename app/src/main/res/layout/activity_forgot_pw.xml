@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".forgot_pw">
+    tools:context=".Activity.forgot_pw">
 
     <TextView
         android:id="@+id/txt_forgot_pw"
@@ -33,11 +33,12 @@
 
     <EditText
         android:id="@+id/et_forgot_pw_name"
-        android:layout_width="335dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:hint="입력"
+        android:layout_marginEnd="5dp"
         android:inputType="textPersonName"
         android:textColor="#4a4a4a"
         android:textColorHint="#c4c4c4"
@@ -60,9 +61,11 @@
 
     <EditText
         android:id="@+id/et_forgot_pw_stdid"
-        android:layout_width="335dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
         android:hint="입력"
         android:inputType="number"
         android:textColor="#4a4a4a"
@@ -92,7 +95,6 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/btn_forgot_email"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

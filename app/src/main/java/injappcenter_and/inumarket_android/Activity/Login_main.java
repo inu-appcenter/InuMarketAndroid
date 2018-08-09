@@ -1,4 +1,4 @@
-package injappcenter_and.inumarket_android;
+package injappcenter_and.inumarket_android.Activity;
 
 
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import injappcenter_and.inumarket_android.Model.LoginResult;
+import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Retrofit.Singleton;
 
 import retrofit2.Call;
@@ -31,7 +32,7 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
     private boolean i;
 
     private String loginsuc = "logged in success";
-    public String usertoken,username,userid,usertel;
+    public String usertoken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +74,8 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                 if (result != null) {
 
                                     usertoken = result.getToken();
-                                    if ((usertoken.length()!=0)&&(loginsuc.equals(result.getmessage()))) {
-                                        Log.d("test", "" + result.message);
+                                    if ((usertoken.length()!=0)&&(loginsuc.equals(result.getMessage()))) {
+                                        Log.d("logintest", "" + result.message);
                                         Log.d("test", "" + result.token);
                                         errtxt_noinput.setVisibility(View.INVISIBLE);
                                         errtxt.setVisibility(View.INVISIBLE);

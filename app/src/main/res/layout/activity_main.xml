@@ -5,45 +5,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".Main">
+    tools:context=".Activity.Main"
+    android:id="@+id/container"
+    >
+
+    <FrameLayout
+        android:id="@+id/frameLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <EditText
+            android:id="@+id/et_main_search"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/search_"
+            android:ems="10"
+            android:hint="찾고있는 상품을 입력하세요"
+            android:inputType="text"
+            android:letterSpacing="-0.07"
+            android:paddingStart="45dp"
+            android:textColorHint="#9b9b9b"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/et_main_search_ing"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/search_short"
+            android:ems="10"
+            android:inputType="text"
+            android:letterSpacing="-0.07"
+            android:lineHeight="20.8sp"
+            android:paddingStart="46dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/btn_main_search_erase"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="68dp"
+        android:background="#00FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:src="@drawable/erase" />
+
+    <Button
+        android:id="@+id/btn_main_search_cancle"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:text="취소"
+        android:textSize="14sp"
+        android:textColor="#475058"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="4dp"
+        android:background="#00FFFFFF"
+        android:paddingTop="17dp"
+        android:paddingBottom="14dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="113dp"
         android:layout_height="32dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_mainpage" />
 
-    <EditText
-        android:id="@+id/et_main_search"
-        android:layout_width="334dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="29dp"
-        android:background="@drawable/search_"
-        android:ems="10"
-        android:hint="찾고있는 상품을 입력하세요"
-        android:inputType="text"
-        android:letterSpacing="-0.07"
-        android:paddingStart="45dp"
-        android:textColorHint="#9b9b9b"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:background="#d8d8d8"
+    <ImageButton
+        android:id="@+id/btn_main_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#00ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mypage" />
+
+    <ImageButton
+        android:id="@+id/btn_main_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#00ffffff"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_main_search" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hamburger" />
+
+
+    <fragment
+        android:id="@+id/fragment_main_product"
+        android:name="injappcenter_and.inumarket_android.Fragment.main_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout="@layout/fragment_main_product" />
 
 
 </android.support.constraint.ConstraintLayout>

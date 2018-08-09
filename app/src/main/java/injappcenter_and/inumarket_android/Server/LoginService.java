@@ -1,4 +1,4 @@
-package injappcenter_and.inumarket_android.Retrofit;
+package injappcenter_and.inumarket_android.Server;
 
 import com.google.gson.JsonObject;
 

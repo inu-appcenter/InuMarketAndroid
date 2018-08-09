@@ -26,28 +26,28 @@ public class LoginResult {
         this.tel = tel;
     }
 
-    public String getmessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setmessage(String message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public String getname() {
-        return name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setname(String name) {
-        this.token = name;
-    }
-
-    public String getid() {
+    public String getId() {
         return id;
     }
 
-    public void setid(String id) {
-        this.id = id;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getToken() {
@@ -58,8 +58,11 @@ public class LoginResult {
         this.token = token;
     }
 
-    public String gettel(String tel) { return tel;}
+    public String getTel() {
+        return tel;
+    }
 
-    public void settel(String tel) { this.tel = tel; }
-
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }

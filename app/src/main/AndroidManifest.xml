@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login_main"/>
-        <activity android:name=".Main" />
-        <activity android:name=".forgot_pw" />
-        <activity android:name=".Start_inum">
+        <activity android:name=".Activity.Main"/>
+        <activity android:name=".Activity.Login_main"/>
+        <activity android:name=".Activity.forgot_pw" />
+        <activity android:name=".Activity.Start_inum">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

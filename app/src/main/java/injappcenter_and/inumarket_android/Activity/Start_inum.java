@@ -1,4 +1,4 @@
-package injappcenter_and.inumarket_android;
+package injappcenter_and.inumarket_android.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
 import android.view.WindowManager;
+
+import injappcenter_and.inumarket_android.Activity.Login_main;
+import injappcenter_and.inumarket_android.R;
 
 public class Start_inum extends AppCompatActivity{
 
