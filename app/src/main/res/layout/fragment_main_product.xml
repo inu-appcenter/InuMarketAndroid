@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_main_product"
     tools:context=".Fragment.main_product"
 >
 
@@ -12,7 +13,11 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f4f4f4"
+        android:layout_marginTop="157dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <ImageButton
@@ -28,7 +33,6 @@
             android:id="@+id/view_ad"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="157dp"
             android:background="#d8d8d8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +41,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView_main_product"
             android:layout_width="match_parent"
-            android:layout_height="283dp"
+            android:layout_height="350dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_main_mail" />

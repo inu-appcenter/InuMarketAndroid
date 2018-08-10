@@ -1,10 +1,12 @@
 package injappcenter_and.inumarket_android.Model;
 
+import android.widget.ImageView;
+
 import com.google.gson.annotations.SerializedName;
 
 public class MainProductResult {
     @SerializedName("productImg")
-    public String[] productImg;
+    public ImageView productImg;
 
     @SerializedName("productId")
     public String productId;
@@ -28,11 +30,11 @@ public class MainProductResult {
     public String __v;
 
 
-    public String[] getProductImg() {
+    public ImageView getProductImg() {
         return productImg;
     }
 
-    public void setProductImg(String[] productImg) {
+    public void setProductImg(ImageView productImg) {
         this.productImg = productImg;
     }
 

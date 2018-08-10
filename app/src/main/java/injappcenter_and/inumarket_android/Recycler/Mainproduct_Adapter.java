@@ -3,60 +3,61 @@ package injappcenter_and.inumarket_android.Recycler;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.R;
 
-class ViewHolder extends RecyclerView.ViewHolder{
-    ImageView productImage;
-    TextView productName, productPrice;
 
-    public ViewHolder(View itemView){
-        super(itemView);
-        productImage = itemView.findViewById(R.id.view_main_product_image);
-        productName = itemView.findViewById(R.id.txt_main_productname);
-        productPrice = itemView.findViewById(R.id.txt_main_productprice);
 
+public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapter.ViewHolder> {
+
+    public ArrayList<Recycler_product_main> mDataset;
+
+    // Data is passed into the constructor
+    public Mainproduct_Adapter(ArrayList<Recycler_product_main> myData) {
+        this.mDataset = myData;
     }
-}
 
-public class Mainproduct_Adapter extends RecyclerView.Adapter<ViewHolder> {
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        public ImageView productimg;
+        public TextView name,price;
 
-    private Context context;
-    private int resourceId;
-    private List<Recycler_product_main> dataList;
+        public ViewHolder(View itemView){
+            super(itemView);
+            productimg = itemView.findViewById(R.id.view_main_product_image);
+            name = itemView.findViewById(R.id.txt_main_productname);
+            price =itemView.findViewById(R.id.txt_main_productprice);
+        }
+    }
 
-    public Mainproduct_Adapter(Context context, int resourceId, List<Recycler_product_main> dataList) {
-        this.context = context;
-        this.resourceId = resourceId;
-        this.dataList = dataList;
-
-
-}
-
-    @NonNull
+    // Inflates the cell layout from xml when needed
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(resourceId,parent,false));
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_product_main_recycler,parent,false);
+       return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Recycler_product_main recycler_product_main = dataList.get(i);
-        //viewHolder.productImage.setImageDrawable(recycler_product_main.getProduct_image());
-        viewHolder.productName.setText(recycler_product_main.getProduct_name());
-        viewHolder.productPrice.setText(recycler_product_main.getProduct_cost());
+    public void onBindViewHolder(@NonNull Mainproduct_Adapter.ViewHolder holder, int position) {
+        holder.name.setText(mDataset.get(position).getProduct_name());
+        holder.price.setText(mDataset.get(position).getProduct_cost());
     }
 
+    // Total number of cells
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mDataset.size();
     }
 }

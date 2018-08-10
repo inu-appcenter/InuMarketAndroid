@@ -10,5 +10,5 @@ import retrofit2.http.POST;
 public interface ProductService {
     @POST("main")
     public Call<MainProductResult>
-    mainproduct(@Header("x-access-token") String main_token);
+    main(@Header("x-access-token") String main_token);
 }
