@@ -4,24 +4,32 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.Visibility;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import injappcenter_and.inumarket_android.Fragment.main_product;
+import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.R;
 
 import static injappcenter_and.inumarket_android.R.id.btn_main_search_cancle;
@@ -36,7 +44,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     private FrameLayout frameLayout;
     private ImageButton imageButton;
     private Fragment fragment;
-
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +60,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             getWindow().setStatusBarColor(Color.WHITE);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        sendData();
 
         et_search = findViewById(R.id.et_main_search);
         et_search_ing = findViewById(R.id.et_main_search_ing);
@@ -61,6 +70,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 
         btn_searchcancle.setOnClickListener(this);
         btn_search_erase.setOnClickListener(this);
+
+
 
         et_search.setVisibility(View.VISIBLE);
         et_search.addTextChangedListener(new TextWatcher() {
@@ -116,5 +127,18 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 break;
             }
         }
+    }
+
+
+    public void sendData(){
+
+        Intent intent = getIntent();
+        token = intent.getStringExtra("token");
+        Log.d("requesttest",token);
+
+        main_product fragment = new main_product();
+        Bundle bundle = new Bundle();
+        bundle.putString("usertoken",token);
+        fragment.setArguments(bundle);
     }
 }

@@ -1,6 +1,7 @@
 package injappcenter_and.inumarket_android.Activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -80,6 +81,7 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                         errtxt_noinput.setVisibility(View.INVISIBLE);
                                         errtxt.setVisibility(View.INVISIBLE);
                                         Intent intent_login = new Intent(getApplicationContext(), Main.class);
+                                        intent_login.putExtra("token",usertoken);
                                         startActivity(intent_login);
                                         finish();
                                     }
