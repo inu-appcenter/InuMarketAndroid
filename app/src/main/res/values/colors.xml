@@ -5,4 +5,6 @@
     <color name="colorAccent">#000000</color>
     <color name="faded_orange">#f16d67</color>
     <color name="hint_underbar">#f6f8fa</color>
+    <color name = "Textgunmetal">#475058</color>
+    <color name="backgroundblank">#f4f4f4</color>
 </resources>

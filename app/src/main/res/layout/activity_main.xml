@@ -7,6 +7,8 @@
     android:background="#ffffff"
     tools:context=".Activity.Main"
     android:id="@+id/container"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     >
 
     <FrameLayout
@@ -46,7 +48,6 @@
             android:ems="10"
             android:inputType="text"
             android:letterSpacing="-0.07"
-            android:lineHeight="20.8sp"
             android:paddingStart="46dp"
             android:textColor="#000000"
             android:textSize="16sp"
@@ -119,7 +120,7 @@
 
 
     <fragment
-        android:id="@+id/fragment_main_product"
+        android:id="@+id/fragment_Main_product"
         android:name="injappcenter_and.inumarket_android.Fragment.main_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
         this.mDataset = myData;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView productimg;
         public TextView name,price;
 
@@ -38,7 +39,9 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
             productimg = itemView.findViewById(R.id.view_main_product_image);
             name = itemView.findViewById(R.id.txt_main_productname);
             price =itemView.findViewById(R.id.txt_main_productprice);
+            //itemView.setOnClickListener(this);
         }
+
     }
 
     // Inflates the cell layout from xml when needed
@@ -46,11 +49,12 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_product_main_recycler,parent,false);
-       return new ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Mainproduct_Adapter.ViewHolder holder, int position) {
+        holder.productimg.setImageResource(mDataset.get(position).getProduct_image());
         holder.name.setText(mDataset.get(position).getProduct_name());
         holder.price.setText(mDataset.get(position).getProduct_cost());
     }
@@ -60,4 +64,5 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
     public int getItemCount() {
         return mDataset.size();
     }
+
 }

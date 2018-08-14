@@ -40,6 +40,7 @@ import static injappcenter_and.inumarket_android.R.id.visible;
 
 public class Main extends AppCompatActivity implements View.OnClickListener{
 
+
     private EditText et_search, et_search_ing;
     private FrameLayout frameLayout;
     private ImageButton imageButton;
@@ -50,17 +51,16 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
- //       FragmentManager fragmentManager = getSupportFragmentManager();
+ //
  //       FragmentTransaction fragmentTransaction =
  //               fragmentManager.beginTransaction();
  //       fragmentTransaction.replace(R.id.container,new main_product());
-//        fragmentTransaction.commit();
+ //        fragmentTransaction.commit();
 
         if(Build.VERSION.SDK_INT>=21){
             getWindow().setStatusBarColor(Color.WHITE);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-        sendData();
 
         et_search = findViewById(R.id.et_main_search);
         et_search_ing = findViewById(R.id.et_main_search_ing);
@@ -82,25 +82,28 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String txt_search = s.toString();
-                et_search.setVisibility(View.INVISIBLE);
-                et_search_ing.setVisibility(View.VISIBLE);
                 et_search_ing.setText(txt_search);
-                if(et_search_ing.getVisibility() == View.VISIBLE) {
+                if (s.length() == 0){
+                    et_search.setVisibility(View.VISIBLE);
+                }
+                else{
+                    et_search.setVisibility(View.INVISIBLE);
+                    et_search_ing.setVisibility(View.VISIBLE);
                     findViewById(R.id.btn_main_search_erase).setVisibility(View.VISIBLE);
                     findViewById(R.id.btn_main_search_cancle).setVisibility(View.VISIBLE);
-                    findViewById(R.id.fragment_main_product).setVisibility(View.INVISIBLE);
                 }
+
+
+                if(et_search_ing.getVisibility() == View.VISIBLE) {
+                    findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
+                }
+                else
+                    findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
 
             }
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length() == 0){
 
-                    findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.et_main_search_ing).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.et_main_search).setVisibility(View.VISIBLE);
-                }
             }
         });
 
@@ -111,17 +114,17 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 
         switch(view.getId()){
             case R.id.btn_main_search_cancle:{
-                et_search.setVisibility(View.VISIBLE);
                 et_search_ing.setVisibility(View.INVISIBLE);
+                et_search.setVisibility(View.VISIBLE);
                 et_search.setText("");
                 findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
                 findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
-                findViewById(R.id.fragment_main_product).setVisibility(View.VISIBLE);
+                findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
                 break;
             }
 
             case R.id.btn_main_search_erase: {
-                et_search.setVisibility(View.VISIBLE);
+                et_search_ing.setVisibility(View.VISIBLE);
                 et_search_ing.setText("");
                 et_search.setText("");
                 break;
@@ -129,16 +132,13 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-
+/*
     public void sendData(){
-
-        Intent intent = getIntent();
-        token = intent.getStringExtra("token");
-        Log.d("requesttest",token);
-
         main_product fragment = new main_product();
-        Bundle bundle = new Bundle();
-        bundle.putString("usertoken",token);
-        fragment.setArguments(bundle);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction Frag_Trans = fragmentManager.beginTransaction();
+        Frag_Trans.add(R.id.fragment_main_product, fragment );
+        Frag_Trans.commit();
     }
+*/
 }

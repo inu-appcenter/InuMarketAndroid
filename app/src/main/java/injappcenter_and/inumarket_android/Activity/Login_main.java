@@ -3,6 +3,7 @@ package injappcenter_and.inumarket_android.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
@@ -34,6 +35,11 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
 
     private String loginsuc = "logged in success";
     public String usertoken;
+    public  SharedPreferences pref_info;
+    SharedPreferences.Editor editor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,14 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
         join_btn.setOnClickListener(this);
         fgt_pw_btn.setOnClickListener(this);
         login_btn.setOnClickListener(this);
+        pref_info = getSharedPreferences("userinfo",MODE_PRIVATE);
+
+        editor = pref_info.edit();
+
     }
+
+
+
     public void onClick(View v){
 
         switch(v.getId()) {
@@ -75,13 +88,14 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                 if (result != null) {
 
                                     usertoken = result.getToken();
+                                    editor.putString("token",usertoken);
+                                    editor.commit();
                                     if ((usertoken.length()!=0)&&(loginsuc.equals(result.getMessage()))) {
                                         Log.d("logintest", "" + result.message);
                                         Log.d("test", "" + result.token);
                                         errtxt_noinput.setVisibility(View.INVISIBLE);
                                         errtxt.setVisibility(View.INVISIBLE);
                                         Intent intent_login = new Intent(getApplicationContext(), Main.class);
-                                        intent_login.putExtra("token",usertoken);
                                         startActivity(intent_login);
                                         finish();
                                     }
@@ -122,5 +136,10 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
             }*/
         }
     }
-
+    public void savePreferences(){
+        SharedPreferences pref_info = getSharedPreferences("pref_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref_info.edit();
+        editor.putString("token",usertoken);
+        editor.commit();
+    }
 }
