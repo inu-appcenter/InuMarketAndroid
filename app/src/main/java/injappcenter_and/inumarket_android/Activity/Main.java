@@ -7,34 +7,43 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import injappcenter_and.inumarket_android.Fragment.main_product;
 import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.R;
-
+import static injappcenter_and.inumarket_android.R.id.fragment_category;
 import static injappcenter_and.inumarket_android.R.id.btn_main_search_cancle;
 import static injappcenter_and.inumarket_android.R.id.container;
+import static injappcenter_and.inumarket_android.R.id.drawer_main_category;
 import static injappcenter_and.inumarket_android.R.id.invisible;
+import static injappcenter_and.inumarket_android.R.id.view;
+import static injappcenter_and.inumarket_android.R.id.view_ad;
 import static injappcenter_and.inumarket_android.R.id.visible;
 
 
@@ -43,19 +52,30 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_search, et_search_ing;
     private FrameLayout frameLayout;
-    private ImageButton imageButton;
-    private Fragment fragment;
+    private ImageButton btncategory, btnmypage;
+    private Fragment category,mypage;
+    DrawerLayout cDrawer;
+    DrawerLayout mDrawer;
+
     String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
+        //       FragmentTransaction fragmentTransaction =
+        //               fragmentManager.beginTransaction();
+        //       fragmentTransaction.replace(R.id.container,new main_product());
+        //        fragmentTransaction.commit();
 
- //
- //       FragmentTransaction fragmentTransaction =
- //               fragmentManager.beginTransaction();
- //       fragmentTransaction.replace(R.id.container,new main_product());
- //        fragmentTransaction.commit();
+
+        cDrawer = findViewById(R.id.fragment_category);
+        category = getSupportFragmentManager().findFragmentById(R.id.drawer_main_category);
+        btncategory = findViewById(R.id.btn_main_category);
+        btncategory.setOnClickListener(this);
+
+        ImageButton closecategory = findViewById(R.id.btn_category_closedrawer);
+        closecategory.setOnClickListener(this);
 
         if(Build.VERSION.SDK_INT>=21){
             getWindow().setStatusBarColor(Color.WHITE);
@@ -129,16 +149,18 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 et_search.setText("");
                 break;
             }
+            case R.id.btn_category_closedrawer:{
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+                drawer.closeDrawer(Gravity.LEFT);
+                break;
+            }
+            case R.id.btn_main_category:
+            {
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+                drawer.openDrawer(Gravity.LEFT);
+                break;
+            }
         }
     }
-
-/*
-    public void sendData(){
-        main_product fragment = new main_product();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction Frag_Trans = fragmentManager.beginTransaction();
-        Frag_Trans.add(R.id.fragment_main_product, fragment );
-        Frag_Trans.commit();
-    }
-*/
 }

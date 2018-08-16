@@ -2,131 +2,153 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".Activity.Main"
-    android:id="@+id/container"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    >
+    tools:context=".Activity.Main">
 
-    <FrameLayout
-        android:id="@+id/frameLayout_main"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="29dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/et_main_search"
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
-            android:background="@drawable/search_"
-            android:ems="10"
-            android:hint="찾고있는 상품을 입력하세요"
-            android:inputType="text"
-            android:letterSpacing="-0.07"
-            android:paddingStart="45dp"
-            android:textColorHint="#9b9b9b"
-            android:textSize="16sp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/et_main_search_ing"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="68dp"
-            android:background="@drawable/search_short"
-            android:ems="10"
-            android:inputType="text"
-            android:letterSpacing="-0.07"
-            android:paddingStart="46dp"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="113dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo_mainpage" />
 
+            <ImageButton
+                android:id="@+id/btn_main_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="#00ffffff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/hamburger" />
 
-    </FrameLayout>
+            <ImageButton
+                android:id="@+id/btn_main_mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="#00ffffff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/mypage" />
 
-    <ImageButton
-        android:id="@+id/btn_main_search_erase"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="68dp"
-        android:background="#00FFFFFF"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:src="@drawable/erase" />
+            <FrameLayout
+                android:id="@+id/frameLayout_main"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="29dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-    <Button
-        android:id="@+id/btn_main_search_cancle"
-        android:layout_width="61dp"
-        android:layout_height="48dp"
-        android:text="취소"
-        android:textSize="14sp"
-        android:textColor="#475058"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="4dp"
-        android:background="#00FFFFFF"
-        android:paddingTop="17dp"
-        android:paddingBottom="14dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        />
+                <EditText
+                    android:id="@+id/et_main_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="13dp"
+                    android:background="@drawable/search_"
+                    android:ems="10"
+                    android:hint="찾고있는 상품을 입력하세요"
+                    android:inputType="text"
+                    android:letterSpacing="-0.07"
+                    android:paddingStart="45dp"
+                    android:textColorHint="#9b9b9b"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="113dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_mainpage" />
-
-
-    <ImageButton
-        android:id="@+id/btn_main_mypage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#00ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage" />
-
-    <ImageButton
-        android:id="@+id/btn_main_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#00ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hamburger" />
+                <EditText
+                    android:id="@+id/et_main_search_ing"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="68dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/search_short"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:letterSpacing="-0.07"
+                    android:paddingStart="46dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
-    <fragment
-        android:id="@+id/fragment_Main_product"
-        android:name="injappcenter_and.inumarket_android.Fragment.main_product"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_main_product" />
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/btn_main_search_erase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="68dp"
+                android:layout_marginTop="29dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/erase"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <Button
+                android:id="@+id/btn_main_search_cancle"
+                android:layout_width="61dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="29dp"
+                android:background="#00FFFFFF"
+                android:paddingBottom="14dp"
+                android:paddingTop="17dp"
+                android:text="취소"
+                android:textColor="#475058"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
+            <fragment
+                android:id="@+id/fragment_Main_product"
+                android:name="injappcenter_and.inumarket_android.Fragment.main_product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout="@layout/fragment_main_product" />
+        </android.support.constraint.ConstraintLayout>
+        <fragment
+            tools:layout="@layout/fragment_categorydraw"
+            android:layout_width="323dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:layout_gravity= "start"
+            android:name = "injappcenter_and.inumarket_android.Fragment.Fragment_category_Drawer"
+            android:id = "@+id/drawer_main_category"
+            />
+
+    </android.support.v4.widget.DrawerLayout>
 </android.support.constraint.ConstraintLayout>
