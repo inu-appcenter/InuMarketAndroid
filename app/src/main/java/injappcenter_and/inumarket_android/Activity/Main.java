@@ -46,9 +46,7 @@ import static injappcenter_and.inumarket_android.R.id.view;
 import static injappcenter_and.inumarket_android.R.id.view_ad;
 import static injappcenter_and.inumarket_android.R.id.visible;
 
-
 public class Main extends AppCompatActivity implements View.OnClickListener{
-
 
     private EditText et_search, et_search_ing;
     private FrameLayout frameLayout;
@@ -62,20 +60,20 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //
-        //       FragmentTransaction fragmentTransaction =
-        //               fragmentManager.beginTransaction();
-        //       fragmentTransaction.replace(R.id.container,new main_product());
-        //        fragmentTransaction.commit();
 
-
+        mDrawer = findViewById(R.id.fragment_mypage);
         cDrawer = findViewById(R.id.fragment_category);
+        mypage = getSupportFragmentManager().findFragmentById(R.id.drawer_main_mypage);
         category = getSupportFragmentManager().findFragmentById(R.id.drawer_main_category);
         btncategory = findViewById(R.id.btn_main_category);
         btncategory.setOnClickListener(this);
+        btnmypage = findViewById(R.id.btn_main_mypage);
+        btnmypage.setOnClickListener(this);
 
+        ImageButton closemypage = findViewById(R.id.btn_mypage_closedrawer);
         ImageButton closecategory = findViewById(R.id.btn_category_closedrawer);
         closecategory.setOnClickListener(this);
+        closemypage.setOnClickListener(this);
 
         if(Build.VERSION.SDK_INT>=21){
             getWindow().setStatusBarColor(Color.WHITE);
@@ -92,7 +90,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         btn_search_erase.setOnClickListener(this);
 
 
-
         et_search.setVisibility(View.VISIBLE);
         et_search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -105,6 +102,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 et_search_ing.setText(txt_search);
                 if (s.length() == 0){
                     et_search.setVisibility(View.VISIBLE);
+                    et_search_ing.setVisibility(View.INVISIBLE);
                 }
                 else{
                     et_search.setVisibility(View.INVISIBLE);
@@ -113,25 +111,23 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                     findViewById(R.id.btn_main_search_cancle).setVisibility(View.VISIBLE);
                 }
 
-
                 if(et_search_ing.getVisibility() == View.VISIBLE) {
                     findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
                 }
                 else
                     findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
-
             }
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-
     }
 
     @Override
     public void onClick(View view) {
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         switch(view.getId()){
             case R.id.btn_main_search_cancle:{
                 et_search_ing.setVisibility(View.INVISIBLE);
@@ -144,21 +140,28 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             }
 
             case R.id.btn_main_search_erase: {
+                et_search.setVisibility(View.INVISIBLE);
                 et_search_ing.setVisibility(View.VISIBLE);
+                findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
                 et_search_ing.setText("");
                 et_search.setText("");
                 break;
             }
             case R.id.btn_category_closedrawer:{
-
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-                drawer.closeDrawer(Gravity.LEFT);
+                    drawer.closeDrawer(Gravity.START);
+                    break;
+            }
+            case R.id.btn_mypage_closedrawer:{
+                drawer.closeDrawer(Gravity.END);
                 break;
             }
             case R.id.btn_main_category:
             {
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-                drawer.openDrawer(Gravity.LEFT);
+                drawer.openDrawer(Gravity.START);
+                break;
+            }
+            case R.id.btn_main_mypage:{
+                drawer.openDrawer(Gravity.END);
                 break;
             }
         }

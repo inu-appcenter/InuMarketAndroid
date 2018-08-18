@@ -16,14 +16,14 @@ import injappcenter_and.inumarket_android.Model.Category_Parent;
 
 import injappcenter_and.inumarket_android.R;
 
-public class ParentAdapter extends BaseExpandableListAdapter{
+public class CategoryParentAdapter extends BaseExpandableListAdapter{
     private static final int PARENT = R.layout.item_category_recycler_parent;
     private static final int CHILD = R.layout.item_category_recycler_child;
     private Context context;
     private Vector<Category_Parent> data;
     private LayoutInflater inflater = null;
 
-    public ParentAdapter(Context context, Vector<Category_Parent> data){
+    public CategoryParentAdapter(Context context, Vector<Category_Parent> data){
         this.data = data;
         this.context = context;
         this.inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);

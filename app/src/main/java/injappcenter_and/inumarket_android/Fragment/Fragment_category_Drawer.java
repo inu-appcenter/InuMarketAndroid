@@ -14,7 +14,7 @@ import java.util.Vector;
 import injappcenter_and.inumarket_android.Model.Category_Parent;
 import injappcenter_and.inumarket_android.Model.Category_child;
 import injappcenter_and.inumarket_android.R;
-import injappcenter_and.inumarket_android.Recycler.ParentAdapter;
+import injappcenter_and.inumarket_android.Recycler.CategoryParentAdapter;
 
 public class Fragment_category_Drawer extends Fragment {
     private ExpandableListView categoryListView;
@@ -27,7 +27,7 @@ public class Fragment_category_Drawer extends Fragment {
        Drawer = (FrameLayout) inflater.inflate(R.layout.fragment_categorydraw,container,false);
 
         Vector<Category_Parent> data = new Vector<>();
-        categoryListView = Drawer.findViewById(R.id.recyclerView_category);
+        categoryListView = Drawer.findViewById(R.id.expandablelist_category);
         Category_Parent item1 = new Category_Parent(R.drawable.book,"책",R.drawable.erase);
         Category_Parent item2 = new Category_Parent(R.drawable.cloth,"의류",R.drawable.erase);
         Category_Parent item3 = new Category_Parent(R.drawable.electric,"가전/가구",R.drawable.erase);
@@ -43,7 +43,7 @@ public class Fragment_category_Drawer extends Fragment {
         data.add(item5);
         data.add(item6);
 
-        ParentAdapter adapter = new ParentAdapter(this.getActivity(),data);
+        CategoryParentAdapter adapter = new CategoryParentAdapter(this.getActivity(),data);
         categoryListView.setAdapter(adapter);
 
         return Drawer;

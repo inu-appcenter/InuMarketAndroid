@@ -150,5 +150,15 @@
             android:id = "@+id/drawer_main_category"
             />
 
+        <fragment
+            tools:layout="@layout/fragment_mypage_drawer"
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:background = "#ffffff"
+            android:layout_gravity = "end"
+            android:name = "injappcenter_and.inumarket_android.Fragment.Fragment_mypage_Drawer"
+            android:id="@+id/drawer_main_mypage"
+            />
+
     </android.support.v4.widget.DrawerLayout>
 </android.support.constraint.ConstraintLayout>
