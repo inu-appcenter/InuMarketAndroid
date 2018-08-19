@@ -1,5 +1,6 @@
 package injappcenter_and.inumarket_android.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.Visibility;
@@ -7,6 +8,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,8 +21,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,8 +58,10 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     private Fragment category,mypage;
     DrawerLayout cDrawer;
     DrawerLayout mDrawer;
+    public ConstraintLayout search_ing;
 
     String token;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +86,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
+        search_ing = findViewById(R.id.bundle_main_search_ing);
+
         et_search = findViewById(R.id.et_main_search);
         et_search_ing = findViewById(R.id.et_main_search_ing);
 
@@ -89,8 +97,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         btn_searchcancle.setOnClickListener(this);
         btn_search_erase.setOnClickListener(this);
 
-
-        et_search.setVisibility(View.VISIBLE);
         et_search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -99,23 +105,13 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String txt_search = s.toString();
-                et_search_ing.setText(txt_search);
-                if (s.length() == 0){
-                    et_search.setVisibility(View.VISIBLE);
-                    et_search_ing.setVisibility(View.INVISIBLE);
-                }
-                else{
+                if (txt_search.length()>0) {
+                    et_search_ing.setFocusable(true);
+                    et_search_ing.setText(txt_search);
                     et_search.setVisibility(View.INVISIBLE);
-                    et_search_ing.setVisibility(View.VISIBLE);
-                    findViewById(R.id.btn_main_search_erase).setVisibility(View.VISIBLE);
-                    findViewById(R.id.btn_main_search_cancle).setVisibility(View.VISIBLE);
-                }
-
-                if(et_search_ing.getVisibility() == View.VISIBLE) {
+                    search_ing.setVisibility(View.VISIBLE);
                     findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
                 }
-                else
-                    findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -130,21 +126,23 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         switch(view.getId()){
             case R.id.btn_main_search_cancle:{
-                et_search_ing.setVisibility(View.INVISIBLE);
                 et_search.setVisibility(View.VISIBLE);
                 et_search.setText("");
-                findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
-                findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
+                search_ing.setVisibility(View.INVISIBLE);
                 findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
+                et_search_ing.setFocusable(false);
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(et_search_ing.getWindowToken(),0);
+
                 break;
             }
 
             case R.id.btn_main_search_erase: {
                 et_search.setVisibility(View.INVISIBLE);
-                et_search_ing.setVisibility(View.VISIBLE);
-                findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
+                search_ing.setVisibility(View.VISIBLE);
                 et_search_ing.setText("");
                 et_search.setText("");
+                findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
                 break;
             }
             case R.id.btn_category_closedrawer:{
