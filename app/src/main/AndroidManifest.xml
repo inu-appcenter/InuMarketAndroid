@@ -9,10 +9,10 @@
         android:icon="@drawable/group_2_copy"
         android:label="INUM"
         android:supportsRtl="true"
-        android:windowSoftInputMode="stateAlwaysHidden"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Start_inum"/>
-        <activity android:name=".Activity.Login_main"/>
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".Activity.Start_inum" />
+        <activity android:name=".Activity.Login_main" />
         <activity android:name=".Activity.forgot_pw" />
         <activity android:name=".Activity.Main">
             <intent-filter>
@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProductDetail"></activity>
     </application>
 
 </manifest>
