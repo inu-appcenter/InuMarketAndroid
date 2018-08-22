@@ -8,6 +8,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +24,6 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     //private ArrayList<letterDataForm> list;
     public static final int HEADER = 0;
     public static final int CHILD = 1;
-    public static final int READ = 2;
 
     private List<Item> data=null;
 
@@ -47,8 +47,9 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         View view = null;
         Context context = parent.getContext();
         float dp = context.getResources().getDisplayMetrics().density;
-        int subItemPaddingLeft=(int)(18*dp);
-        int subItemPaddingTopAndBottom = (int)(5*dp);
+        int subItemPaddingLeft=(int)(20*dp);
+        int subItemPaddingTop = (int)(14*dp);
+        int subItemPaddingBottom = (int)(27*dp);
 
         switch(type) {
             case HEADER:
@@ -57,16 +58,36 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 ListHeaderViewHolder header = new ListHeaderViewHolder(view);
                 return header;
             case CHILD:
+                LinearLayout Ll = new LinearLayout(context);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                        (ViewGroup.LayoutParams.MATCH_PARENT,
+                         146);
+                Ll.setLayoutParams(params);
+
                 TextView itemTextView = new TextView(context);
-                itemTextView.setPadding(subItemPaddingLeft,subItemPaddingTopAndBottom,0,subItemPaddingTopAndBottom);
-                itemTextView.setLayoutParams(
-                        new ViewGroup.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));
-                return new RecyclerView.ViewHolder(itemTextView) {
+                itemTextView.setPadding(subItemPaddingLeft,subItemPaddingTop,0,subItemPaddingBottom);
+                LinearLayout.LayoutParams itemTextViewParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        90
+                );
+                itemTextView.setLayoutParams(itemTextViewParams);
+                itemTextView.setTextSize(16);
+                itemTextView.setText("텍스트부분입니다");
+                itemTextView.setTag("letterInfo");
+
+                Button sendItemButton = new Button(context);
+                LinearLayout.LayoutParams sendItemButtonParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        56
+                );
+                sendItemButton.setLayoutParams(sendItemButtonParams);
+                sendItemButton.setText("전송버튼입니다");
+
+
+                Ll.addView(itemTextView);
+                Ll.addView(sendItemButton);
+                return new RecyclerView.ViewHolder(Ll) {
                 };
-            case READ:
-                return null;
         }
         return null;
     }
@@ -82,12 +103,12 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 final ListHeaderViewHolder itemController = (ListHeaderViewHolder) holder;
                 itemController.refferaItem = item;
                 itemController.header_title.setText(item.text);
-                /*if(item.invisibleChildren == null) {
+                if(item.isRead == null) {
                     itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
                 }
                 else{
                     itemController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
-                }*/
+                }
 
                 itemController.Rclayout.setOnClickListener(new View.OnClickListener(){
                     @Override
@@ -111,22 +132,19 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                 index ++;
                             }
                             notifyItemRangeInserted(pos + 1, index - pos - 1);
-                           // itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
+                           itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
                             item.invisibleChildren = null;
                         }
                     }
                 });
                 break;
             case CHILD :
-                TextView itemTextView = (TextView) holder.itemView;
-                itemTextView.setText(data.get(position).text);
-                break;
-            case READ :
-                final ListHeaderViewHolder btnController = (ListHeaderViewHolder) holder;
-                if(data.get(position).text.equals("false"))
-                    btnController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
-                else
-                    btnController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
+                LinearLayout Ll = (LinearLayout) holder.itemView;
+                ((TextView) Ll.findViewWithTag("letterInfo")).setText(data.get(position).text);
+                //TextView itemTextView = (TextView) holder.itemView;
+                //itemTextView.setText(data.get(position).text);
+               // Button sendItemButton = (Button) holder.itemView;
+               // sendItemButton.setText("버튼입니다");
                 break;
         }
     }
@@ -178,7 +196,9 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static class Item {
         public int type;
         public String text;
+        public Boolean bool;
         public List<Item> invisibleChildren;
+        public List<Item> isRead;
 
         public Item() {
 
@@ -188,6 +208,11 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             this.type = type;
             this.text = text;
         }
+
+        public Item(String text){
+            this.text = text;
+        }
+
     }
 }
 
