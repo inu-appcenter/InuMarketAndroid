@@ -1,5 +1,6 @@
 package injappcenter_and.inumarket_android.Activity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -9,12 +10,18 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +40,9 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
     private List<String> numberList;
     private CircleIndicator circleIndicator;
     PagerAdapter_product viewPagerAdapter;
+    ImageButton btnClosePopup;
+    PopupWindow pwindo;
+    int mWidthPixels, mHeightPixels;
 
 
     @Override
@@ -44,10 +54,13 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             getWindow().setStatusBarColor(Color.WHITE);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+
         ImageButton btn_left = findViewById(R.id.btn_productdetail_slideleft);
         ImageButton btn_right = findViewById(R.id.btn_productdetail_slideright);
         btn_left.setOnClickListener(this);
         btn_right.setOnClickListener(this);
+        Button btnOpenPopup = findViewById(R.id.btn_productdetail_question);
+        btnOpenPopup.setOnClickListener(this);
 
         ImageResource = new int[]{
                 R.color.blush_pink,
@@ -124,8 +137,32 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                     viewPager.setCurrentItem(prev);
                 break;
             }
+            case R.id.btn_productdetail_question:{
+                initiatePopupWindow();
+                break;
+            }
+            case R.id.btn_popup_close: case R.id.btn_popup_ok: {
+                pwindo.dismiss();
+                break;
+            }
         }
 
+    }
+
+    private void initiatePopupWindow() {
+        try {
+            View layout = getLayoutInflater().inflate(R.layout.popup_product_letter_sent,null);
+
+            pwindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
+            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            pwindo.setAnimationStyle(-1);
+            btnClosePopup = layout.findViewById(R.id.btn_popup_close);
+            btnClosePopup.setOnClickListener(this);
+            Button btnOkPopup = layout.findViewById(R.id.btn_popup_ok);
+            btnOkPopup.setOnClickListener(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
