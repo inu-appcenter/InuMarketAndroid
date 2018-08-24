@@ -1,12 +1,12 @@
 package injappcenter_and.inumarket_android.Fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +15,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.Model.Recycler_product_main;
+import injappcenter_and.inumarket_android.Activity.ProductDetail;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
-import injappcenter_and.inumarket_android.Retrofit.Singleton;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -97,7 +92,13 @@ public class main_product extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_main_product);
         recyclerView.setHasFixedSize(true);
         mAdapter = new Mainproduct_Adapter(list);
-
+        mAdapter.setItemClick(new Mainproduct_Adapter.ItemClick() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent_detail = new Intent(getActivity(), ProductDetail.class);
+                startActivity(intent_detail);
+            }
+        });
         RecyclerView.LayoutManager mLayoutManager;
         mLayoutManager = new GridLayoutManager(getActivity(),3);
 

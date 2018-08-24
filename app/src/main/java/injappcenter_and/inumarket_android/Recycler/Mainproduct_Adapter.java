@@ -24,6 +24,14 @@ import injappcenter_and.inumarket_android.R;
 public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapter.ViewHolder> {
 
     public ArrayList<Recycler_product_main> mDataset;
+    private ItemClick itemClick;
+    public interface ItemClick{
+        public void onClick(View view, int position);
+    }
+
+    public void setItemClick(ItemClick itemClick){
+        this.itemClick = itemClick;
+    }
 
     // Data is passed into the constructor
     public Mainproduct_Adapter(ArrayList<Recycler_product_main> myData) {
@@ -53,10 +61,20 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Mainproduct_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Mainproduct_Adapter.ViewHolder holder, final int position) {
         holder.productimg.setImageResource(mDataset.get(position).getProduct_image());
         holder.name.setText(mDataset.get(position).getProduct_name());
         holder.price.setText(mDataset.get(position).getProduct_cost());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if (itemClick != null){
+                    itemClick.onClick(v,position);
+                }
+            }
+        });
     }
 
     // Total number of cells
