@@ -26,8 +26,7 @@ public class sign3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 그럼 sign3 액티비티에서 getIntent() 함수로 전달받은 인텐트를 가져올 수 있어요
-        // 전달받은 intent 를 전역변수 mIntent에 넣어두고
+        // 전달받은 intent 를 전역변수 mIntent에 넣어두기
         mIntent = getIntent();
 
         setContentView(R.layout.sign_password);
@@ -51,7 +50,7 @@ public class sign3Activity extends AppCompatActivity {
                     // 다음 버튼을 눌렀을때 다음화면으로 이동해야할 activity 정의
                     mIntent.setClass(getApplicationContext(), sign4Activity.class);
                     // 비밀번호 데이터를 전달받았던 인텐트에 추가
-                    // 어차피 패스1 이랑 패스2가 같기 때문에 패스1을 넣어주었습니다.넵이해됫습니다
+
                     mIntent.putExtra(Const.CONST_PASS, password1.getText().toString().trim());
                     startActivity(mIntent);
                 }
