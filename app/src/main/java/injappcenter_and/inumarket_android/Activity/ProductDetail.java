@@ -5,23 +5,22 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
-import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +39,8 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
     private List<String> numberList;
     private CircleIndicator circleIndicator;
     PagerAdapter_product viewPagerAdapter;
-    ImageButton btnClosePopup;
-    PopupWindow pwindo;
-    int mWidthPixels, mHeightPixels;
+    ImageButton btnClosePopup, btnClose;
+    PopupWindow pwindo,pwsendindo;
 
 
     @Override
@@ -138,9 +136,20 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                 break;
             }
             case R.id.btn_productdetail_question:{
+                initiatePopupWindow_beforesend();
+                break;
+            }
+
+            case R.id.txt_popup_letter_cancle: case R.id.btn_popup_letter_close: {
+                pwsendindo.dismiss();
+                break;
+            }
+            case R.id.txt_popup_letter_send:{
+                pwsendindo.dismiss();
                 initiatePopupWindow();
                 break;
             }
+
             case R.id.btn_popup_close: case R.id.btn_popup_ok: {
                 pwindo.dismiss();
                 break;
@@ -160,6 +169,24 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             btnClosePopup.setOnClickListener(this);
             Button btnOkPopup = layout.findViewById(R.id.btn_popup_ok);
             btnOkPopup.setOnClickListener(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initiatePopupWindow_beforesend() {
+        try {
+            View layout = getLayoutInflater().inflate(R.layout.popup_product_letter,null);
+
+            pwsendindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
+            pwsendindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            pwsendindo.setAnimationStyle(-1);
+            btnClose = layout.findViewById(R.id.btn_popup_letter_close);
+            btnClose.setOnClickListener(this);
+            TextView txtcencle = layout.findViewById(R.id.txt_popup_letter_cancle);
+            txtcencle.setOnClickListener(this);
+            TextView txtsend = layout.findViewById(R.id.txt_popup_letter_send);
+            txtsend.setOnClickListener(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
