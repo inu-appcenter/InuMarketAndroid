@@ -2,6 +2,7 @@ package injappcenter_and.inumarket_android.Recycler;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import injappcenter_and.inumarket_android.Activity.letter_send;
 import injappcenter_and.inumarket_android.Model.letterDataForm;
 import injappcenter_and.inumarket_android.R;
 
@@ -45,6 +47,7 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;*/
         View view = null;
+        View letterview = null;
         Context context = parent.getContext();
         float dp = context.getResources().getDisplayMetrics().density;
         int subItemPaddingLeft=(int)(20*dp);
@@ -58,36 +61,10 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 ListHeaderViewHolder header = new ListHeaderViewHolder(view);
                 return header;
             case CHILD:
-                LinearLayout Ll = new LinearLayout(context);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                        (ViewGroup.LayoutParams.MATCH_PARENT,
-                         146);
-                Ll.setLayoutParams(params);
-
-                TextView itemTextView = new TextView(context);
-                itemTextView.setPadding(subItemPaddingLeft,subItemPaddingTop,0,subItemPaddingBottom);
-                LinearLayout.LayoutParams itemTextViewParams = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        90
-                );
-                itemTextView.setLayoutParams(itemTextViewParams);
-                itemTextView.setTextSize(16);
-                itemTextView.setText("텍스트부분입니다");
-                itemTextView.setTag("letterInfo");
-
-                Button sendItemButton = new Button(context);
-                LinearLayout.LayoutParams sendItemButtonParams = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        56
-                );
-                sendItemButton.setLayoutParams(sendItemButtonParams);
-                sendItemButton.setText("전송버튼입니다");
-
-
-                Ll.addView(itemTextView);
-                Ll.addView(sendItemButton);
-                return new RecyclerView.ViewHolder(Ll) {
-                };
+                LayoutInflater inflater1 = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                letterview = inflater1.inflate(R.layout.item_letter_context,parent,false);
+                ListChildViewHolder child = new ListChildViewHolder(letterview);
+                return child;
         }
         return null;
     }
@@ -113,16 +90,20 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 itemController.Rclayout.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
+                        System.out.println(item.invisibleChildren);
                         if(item.invisibleChildren == null){
                             item.invisibleChildren = new ArrayList<Item>();
-                            int count = 0;
+//                            int count = 0;
                             int pos = data.indexOf(itemController.refferaItem);
                             while (data.size() > pos + 1 && data.get(pos + 1).type == CHILD) {
                                 item.invisibleChildren.add(data.remove(pos + 1));
-                                count++;
+//                                count++;
                             }
-                            notifyItemRangeRemoved(pos+1,count);
-                           // itemController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
+//                            System.out.println(pos);
+//                            System.out.println(count);
+                            notifyItemRemoved(pos+1);
+//                            System.out.println(item.invisibleChildren);
+                            // itemController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
                         }
                         else{
                             int pos = data.indexOf(itemController.refferaItem);
@@ -132,19 +113,55 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                 index ++;
                             }
                             notifyItemRangeInserted(pos + 1, index - pos - 1);
-                           itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
+                            itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
                             item.invisibleChildren = null;
                         }
                     }
                 });
                 break;
             case CHILD :
-                LinearLayout Ll = (LinearLayout) holder.itemView;
-                ((TextView) Ll.findViewWithTag("letterInfo")).setText(data.get(position).text);
-                //TextView itemTextView = (TextView) holder.itemView;
-                //itemTextView.setText(data.get(position).text);
-               // Button sendItemButton = (Button) holder.itemView;
-               // sendItemButton.setText("버튼입니다");
+                final ListChildViewHolder contentController = (ListChildViewHolder) holder;
+//                int[] myHeader = new int[1];
+//                for(int i = position; i >= 0; i--){
+//                    Item tmpItem = data.get(i);
+//                    if(tmpItem.type == HEADER && tmpItem.invisibleChildren != null){
+//                        if(tmpItem.invisibleChildren.get(0) == contentController.contentItem){
+//                             myHeader[0] = i;
+//                        }
+//                    }
+//                }
+                contentController.child_content.setText(data.get(position).text);
+                contentController.contentItem = item;
+
+                contentController.close_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        System.out.println(item.invisibleChildren);
+                        if (item.invisibleChildren == null) {
+                            item.invisibleChildren = new ArrayList<Item>();
+//                            int count = 0;
+                            int pos = data.indexOf(contentController.contentItem);
+                            while (data.size() > pos && data.get(pos).type == CHILD) {
+                                item.invisibleChildren.add(data.remove(pos));
+//                                count++;
+                            }
+//                            System.out.println(pos);
+//                            System.out.println(count);
+//                            notifyItemRangeRemoved(pos, count);
+                            notifyItemRemoved(pos);
+//                            System.out.println(item.invisibleChildren);
+                        }
+                    }
+                });
+
+                contentController.send_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(),letter_send.class );
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
                 break;
         }
     }
@@ -183,13 +200,28 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public Item refferaItem;
         public ViewGroup Rclayout;
 
-
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
             header_title = (TextView) itemView.findViewById(R.id.letter_Rv_Tv);
             btn_expand_toggle = (ImageView) itemView.findViewById(R.id.letter_Rv_Rb);
             Rclayout = (ViewGroup) itemView.findViewById(R.id.letter_Rv_Vc);
 
+        }
+    }
+
+    private static class ListChildViewHolder extends RecyclerView.ViewHolder {
+        public Item contentItem;
+        public TextView child_content;
+        public Button send_btn;
+        public Button close_btn;
+        public ViewGroup Ctlayout;
+
+        public ListChildViewHolder(View contentVIew) {
+            super(contentVIew);
+            child_content = (TextView) contentVIew.findViewById(R.id.letter_Context_text);
+            send_btn = (Button) contentVIew.findViewById(R.id.letter_Context_sendBtn);
+            close_btn = (Button) contentVIew.findViewById(R.id.letter_Context_closeBtn);
+            Ctlayout = (ViewGroup) contentVIew.findViewById(R.id.letter_Context);
         }
     }
 
@@ -214,5 +246,6 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+
 }
 

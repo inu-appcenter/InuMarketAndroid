@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="146dp"
+    android:orientation="vertical"
+    android:id="@+id/letter_Context">
+
+    <TextView
+        android:id="@+id/letter_Context_text"
+        android:layout_width="wrap_content"
+        android:layout_height="89dp"
+        android:layout_weight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="27dp"
+        android:textSize="16sp"
+        android:text="구매자 이름 : 임동완 \n 전화번호 : 010-2167-5629" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/pale_grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/letter_Context_sendBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.98"
+            android:text="연락하기"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.02"
+            android:background="@color/pale_grey" />
+
+        <Button
+            android:id="@+id/letter_Context_closeBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.98"
+            android:text="접기"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+</LinearLayout>
