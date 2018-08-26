@@ -1,7 +1,6 @@
 package injappcenter_and.inumarket_android.Fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -14,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import injappcenter_and.inumarket_android.Model.letterDataForm;
+import injappcenter_and.inumarket_android.Model.letterDataHeader;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.letterRecyclerAdapter;
 
@@ -35,15 +34,15 @@ public class SellTabFragment extends Fragment{
         rcv.setLayoutManager(linearLayoutManager);
 
         /*
-        ArrayList<letterDataForm> list = new ArrayList<>();
-        list.add(new letterDataForm("1"));
-        list.add(new letterDataForm("2"));
-        list.add(new letterDataForm("3"));
-        list.add(new letterDataForm("4"));
-        list.add(new letterDataForm("5"));
+        ArrayList<letterDataHeader> list = new ArrayList<>();
+        list.add(new letterDataHeader("1"));
+        list.add(new letterDataHeader("2"));
+        list.add(new letterDataHeader("3"));
+        list.add(new letterDataHeader("4"));
+        list.add(new letterDataHeader("5"));
 */
 
-        List<letterRecyclerAdapter.Item> list = new ArrayList<>();
+        /*List<letterRecyclerAdapter.Item> list = new ArrayList<>();
         ArrayList HeaderArray = new ArrayList();
         ArrayList ChildArray = new ArrayList();
         ArrayList<String> ReadArray = new ArrayList<String>();
@@ -68,7 +67,7 @@ public class SellTabFragment extends Fragment{
             places.isRead = new ArrayList<>();
             places.isRead.add(new letterRecyclerAdapter.Item(ReadArray.get(i)));
             list.add(places);
-        }
+        }*/
 
 /*
         list.add(new letterRecyclerAdapter.Item(letterRecyclerAdapter.HEADER, "첫번째 쪽지"));
@@ -85,7 +84,14 @@ public class SellTabFragment extends Fragment{
         places.invisibleChildren.add(new letterRecyclerAdapter.Item(letterRecyclerAdapter.CHILD,"네번째 쪽지 내용"));
 
         list.add(places);*/
-        rcv.setAdapter(new letterRecyclerAdapter(list));
+        /*rcv.setAdapter(new letterRecyclerAdapter(list));*/
+
+
+        /*rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
+
+        rcv.setAdapter(rcvAdapter);*/
         return rootview;
     }
 }

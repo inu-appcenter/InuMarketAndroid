@@ -3,25 +3,13 @@ package injappcenter_and.inumarket_android.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-import injappcenter_and.inumarket_android.Model.letterDataForm;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.TabPagerAdapter;
-import injappcenter_and.inumarket_android.Recycler.letterRecyclerAdapter;
 
 public class letter_form extends AppCompatActivity {
 

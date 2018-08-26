@@ -15,7 +15,8 @@
         <activity android:name=".Activity.Login_main"/>
         <activity android:name=".Activity.forgot_pw" />
         <activity android:name=".Activity.Start_inum"/>
-        <activity android:name=".Activity.letter_send"/>
+        <activity android:name=".Activity.letter_send"
+            android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".Activity.letter_form">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

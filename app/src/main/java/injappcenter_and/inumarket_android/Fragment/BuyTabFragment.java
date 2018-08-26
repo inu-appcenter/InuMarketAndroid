@@ -1,13 +1,9 @@
 package injappcenter_and.inumarket_android.Fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,14 +13,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import injappcenter_and.inumarket_android.Model.letterDataForm;
+import injappcenter_and.inumarket_android.Model.letterDataHeader;
 import injappcenter_and.inumarket_android.R;
-import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
 import injappcenter_and.inumarket_android.Recycler.letterRecyclerAdapter;
 
 public class BuyTabFragment extends Fragment{
     RecyclerView rcv;
-    letterRecyclerAdapter rcvAdapter;
+    letterRecyclerAdapter rcvAdapter = new letterRecyclerAdapter();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,13 +31,15 @@ public class BuyTabFragment extends Fragment{
         rcv.addItemDecoration(new DividerItemDecoration(getActivity(),linearLayoutManager.getOrientation()));
         rcv.setLayoutManager(linearLayoutManager);
 
-
+/*
         List<letterRecyclerAdapter.Item> list = new ArrayList<>();
         ArrayList HeaderArray = new ArrayList();
         ArrayList ChildArray = new ArrayList();
-        ArrayList<String> ReadArray = new ArrayList<String>();
+        ArrayList<String> ReadArray = new ArrayList<String>();*/
 
-        HeaderArray.add("첫번째 쪽지");
+
+
+       /* HeaderArray.add("첫번째 쪽지");
         HeaderArray.add("두번째 쪽지");
         HeaderArray.add("세번째 쪽지");
         ChildArray.add("첫번째 쪽지내용");
@@ -50,11 +47,16 @@ public class BuyTabFragment extends Fragment{
         ChildArray.add("세번째 쪽지내용");
         ReadArray.add("true");
         ReadArray.add("false");
-        ReadArray.add("true");
+        ReadArray.add("true");*/
+
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
 
 
 
-        int i;
+
+/*        int i;
         for(i=0;i<HeaderArray.size();i++){
             letterRecyclerAdapter.Item places = new letterRecyclerAdapter.Item(letterRecyclerAdapter.HEADER, HeaderArray.get(i).toString());
             places.invisibleChildren = new ArrayList<>();
@@ -65,7 +67,9 @@ public class BuyTabFragment extends Fragment{
             }
             list.add(places);
         }
-        rcv.setAdapter(new letterRecyclerAdapter(list));
+        rcv.setAdapter(new letterRecyclerAdapter(list));*/
+
+        rcv.setAdapter(rcvAdapter);
 
         return rootview;
     }
