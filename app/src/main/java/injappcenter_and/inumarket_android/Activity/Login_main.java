@@ -80,7 +80,7 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
 
                 if((userid.length()==9)&&(userpw.length()>0)) {
                     errtxt_noinput.setVisibility(View.INVISIBLE);
-                    Singleton.retrofitLogin.login(userid, userpw).enqueue(new Callback<LoginResult>() {
+                    Singleton.retrofit.login(userid, userpw).enqueue(new Callback<LoginResult>() {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                             if (response.isSuccessful()) {

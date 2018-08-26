@@ -63,7 +63,7 @@ public class main_product extends android.support.v4.app.Fragment {
 /*
         if (token != null) {
             Log.d("Sharedpreferences test", "토큰 받은거 확인" + token);
-            Singleton.mainproduct.main(token).enqueue(new Callback<MainProductResult>() {
+            Singleton.retrofit.main(token).enqueue(new Callback<MainProductResult>() {
                 @Override
                 public void onResponse(Call<MainProductResult> call, Response<MainProductResult> response) {
 
@@ -103,7 +103,7 @@ public class main_product extends android.support.v4.app.Fragment {
         mLayoutManager = new GridLayoutManager(getActivity(),3);
 
         for (int i = 0 ; i<12 ; i ++) {
-            list.add(new Recycler_product_main(R.drawable.erase,"상품이름","가격"));
+            list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격"));
         }
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

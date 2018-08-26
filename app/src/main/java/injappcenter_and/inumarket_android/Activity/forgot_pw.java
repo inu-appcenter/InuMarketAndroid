@@ -46,7 +46,7 @@ public class forgot_pw extends AppCompatActivity {
         String name = name_edit.getText().toString();
         String stdid = stdid_edit.getText().toString();
         if ((name.length() > 2) && (stdid.length() == 9)) {
-            Singleton.statechange.forgot_pw(stdid,name).enqueue(new Callback<forgotpw_Result>() {
+            Singleton.retrofit.forgot_pw(stdid,name).enqueue(new Callback<forgotpw_Result>() {
                 @Override
                 public void onResponse(Call<forgotpw_Result> call, Response<forgotpw_Result> response) {
                     if (response.isSuccessful()) {
