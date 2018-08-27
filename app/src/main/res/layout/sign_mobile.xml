@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
     <ImageView
         android:id="@+id/img_next"
-        android:layout_width="360dp"
-        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:background="@color/white"
+        android:scaleType="fitXY"
         android:src="@drawable/group" />
 
 <LinearLayout
@@ -24,13 +24,7 @@
     android:orientation="vertical"
     tools:context=".register.MainActivity">
 
-    <!-- 이렇게 가로 세로 길이 지정해놓으시면 다른 단말에서 화면 다르게 보여요  아..그래서 제가 s7으로
-    연결햇더니 저 에뮬ㅋ기랑 다르게 다음이 엄청 커지더라구요.. 그래서 밑으로 삐져나가게 억지로 맞춰야
-    되던데 그게문제엿군요 .
-    제일 상단의 레이아웃은 match_parent 로 맞춰주시면 화면 전체라고 생각하시면 됩니다
-    아아 이해됫습니다 ㅎㅎ match_parent 가 화면을 꽉차게 하라는 뜻은 아니고요
-    자기 자신 위의 객체의 크기만큼 꽉 채우라는 의미입니다 아아 그리고 제꺼 화면이 왜 검은색인가요 아무것도 안건들엿는데
-    ???? 무슨 화면이요? 그 xml 새로만들면 배경이 완전 깜짱색이던데 보여주시죠-->
+
     <TextView
 
         android:layout_width="wrap_content"
@@ -54,8 +48,6 @@
         android:layout_marginTop="7.7dp"
         android:layout_gravity="center"
         android:src="@drawable/sign_mobile" />
-<!-- 딱히 하드코딩 할 만한건 text 부분밖에 없는데요? ㅎㅎ 아그래요? 근데 저 다음버튼을 넣고나서 위에를 수정하면
-계속 margintop 을 고쳐야해서 하면서 이게맞나..해서-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,5 +80,4 @@
 
 
 </LinearLayout>
-
 </RelativeLayout>

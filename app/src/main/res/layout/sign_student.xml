@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ImageView
         android:id="@+id/img_next"
-        android:layout_width="360dp"
-        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:background="@color/white"
+        android:scaleType="fitXY"
         android:src="@drawable/group" />
 
     <LinearLayout
@@ -19,36 +22,41 @@
         android:layout_above="@id/img_next"
         android:background="#ffffff"
         android:orientation="vertical"
-        tools:context=".register.MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="44dp"
-        android:textColor="#475058"
-        android:textSize="20sp"
-        android:text="학생정보 입력하기" />
+        tools:context=".register.MainActivity"
+        android:gravity="center">
 
-    <ImageView
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="44dp"
+            android:textColor="#475058"
+            android:textSize="20sp"
+            android:text="학생정보 입력하기"
+            android:gravity="center_horizontal"/>
+
+
+        <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:layout_gravity="center"
         android:src="@drawable/main" />
 
     <ImageView
-        android:layout_width="258.3dp"
-        android:layout_height="20.7dp"
-        android:layout_marginTop="7.7dp"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         android:src="@drawable/btn_student" />
     <TextView
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_marginTop="13.6dp"
-        android:layout_marginLeft="28dp"
+        android:paddingLeft="28dp"
         android:textSize="12sp"
         android:text="이름" />
 
@@ -65,11 +73,11 @@
         android:inputType="textPersonName"
         android:hint="입력" />
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_marginTop="22dp"
-        android:layout_marginLeft="28dp"
+        android:paddingLeft="28dp"
         android:textSize="12sp"
         android:inputType="phone"
         android:text="학번" />
@@ -89,9 +97,9 @@
 
     <TextView
         android:id="@+id/message"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center_horizontal"
         android:layout_marginTop="233dp"
         android:textColor="#fb3a2f"
          android:text=""/>
