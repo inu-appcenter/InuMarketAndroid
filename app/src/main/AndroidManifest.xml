@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ProductDetail" />
-        <activity android:name=".Activity.sellerProduct"></activity>
+        <activity android:name=".Activity.sellerProduct" />
+        <activity android:name=".Activity.Mypage_Setting"></activity>
     </application>
 
 </manifest>
