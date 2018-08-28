@@ -21,6 +21,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import injappcenter_and.inumarket_android.Fragment.Fragment_searchresult;
 import injappcenter_and.inumarket_android.Fragment.main_product;
 import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.R;
@@ -75,6 +77,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         btncategory.setOnClickListener(this);
         btnmypage = findViewById(R.id.btn_main_mypage);
         btnmypage.setOnClickListener(this);
+
+        FragmentManager fm = getSupportFragmentManager();
 
         ImageButton closemypage = findViewById(R.id.btn_mypage_closedrawer);
         ImageButton closecategory = findViewById(R.id.btn_category_closedrawer);
@@ -116,8 +120,26 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void afterTextChanged(Editable s) {
 
+                et_search_ing.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        //Enter key Action
+                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                            //Enter키눌렀을떄 처리
+                            Fragment_searchresult searchproduct = new Fragment_searchresult();
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.fragment_Main_product, searchproduct)
+                                    .addToBackStack(null)
+                                    .commit();
+                            search_no_ing();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
             }
         });
+
     }
 
     @Override
@@ -126,14 +148,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         switch(view.getId()){
             case R.id.btn_main_search_cancle:{
-                et_search.setVisibility(View.VISIBLE);
-                et_search.setText("");
-                search_ing.setVisibility(View.INVISIBLE);
+                search_no_ing();
                 findViewById(R.id.fragment_constraint).setVisibility(View.VISIBLE);
-                et_search_ing.setFocusable(false);
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(et_search_ing.getWindowToken(),0);
-
                 break;
             }
 
@@ -163,5 +179,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 break;
             }
         }
+    }
+    public void search_no_ing(){
+        et_search.setVisibility(View.VISIBLE);
+        et_search.setText("");
+        search_ing.setVisibility(View.INVISIBLE);
+
+        et_search_ing.setFocusable(false);
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(et_search_ing.getWindowToken(),0);
     }
 }

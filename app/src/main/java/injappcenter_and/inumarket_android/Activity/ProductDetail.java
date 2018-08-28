@@ -1,16 +1,12 @@
 package injappcenter_and.inumarket_android.Activity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,9 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import injappcenter_and.inumarket_android.R;
@@ -42,7 +35,6 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
     ImageButton btnClosePopup, btnClose;
     PopupWindow pwindo,pwsendindo;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +51,8 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         btn_right.setOnClickListener(this);
         Button btnOpenPopup = findViewById(R.id.btn_productdetail_question);
         btnOpenPopup.setOnClickListener(this);
+        Button sellerproduct = findViewById(R.id.btn_productdetail_otherproduct);
+        sellerproduct.setOnClickListener(this);
 
         ImageResource = new int[]{
                 R.color.blush_pink,
@@ -109,6 +103,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         @Override
         public void onPageScrollStateChanged(int state) {
         }
+
     };
 
     @Override
@@ -118,6 +113,13 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         int next = curr+1;
         int prev = curr-1;
         switch (v.getId()) {
+            case R.id.btn_productdetail_otherproduct: {
+                Intent intent_seller = new Intent(getApplicationContext(), sellerProduct.class);
+                startActivity(intent_seller);
+
+                finish();
+                break;
+            }
             case R.id.btn_productdetail_slideright:
             {
                 if (next>last){

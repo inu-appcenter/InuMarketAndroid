@@ -2,11 +2,14 @@ package injappcenter_and.inumarket_android.Recycler;
 
 import android.content.Context;
 import android.media.Image;
+import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,14 +19,16 @@ import injappcenter_and.inumarket_android.Model.Category_Parent;
 
 import injappcenter_and.inumarket_android.R;
 
-public class CategoryParentAdapter extends BaseExpandableListAdapter{
+public class CategoryAdapter extends BaseExpandableListAdapter{
     private static final int PARENT = R.layout.item_category_recycler_parent;
     private static final int CHILD = R.layout.item_category_recycler_child;
     private Context context;
     private Vector<Category_Parent> data;
     private LayoutInflater inflater = null;
 
-    public CategoryParentAdapter(Context context, Vector<Category_Parent> data){
+
+
+    public CategoryAdapter(Context context, Vector<Category_Parent> data){
         this.data = data;
         this.context = context;
         this.inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -81,11 +86,11 @@ public class CategoryParentAdapter extends BaseExpandableListAdapter{
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if(convertView == null) {
             convertView = inflater.inflate(CHILD, parent, false);
         }
-        TextView childname = (TextView) convertView.findViewById(R.id.txt_categoryitem_recycler_child);
+        final TextView childname = (TextView) convertView.findViewById(R.id.txt_categoryitem_recycler_child);
         childname.setText(data.get(groupPosition).child.get(childPosition).getChildname());
 
         return convertView;
@@ -93,6 +98,9 @@ public class CategoryParentAdapter extends BaseExpandableListAdapter{
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
+
+
+
         return true;
     }
 }

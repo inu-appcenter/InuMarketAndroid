@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/product_detail"
+    android:background="#ffffff"
     tools:context=".Activity.ProductDetail">
 
     <android.support.v4.view.ViewPager
@@ -171,6 +173,7 @@
         app:srcCompat = "@drawable/rightside"
         android:background="#00ffffff"
         />
+
     <ImageButton
         android:layout_width="52dp"
         android:layout_height="52dp"
@@ -192,4 +195,5 @@
         app:layout_constraintBottom_toBottomOf="@id/viewpager_productdetail_image"
         android:layout_marginBottom="8dp"
         />
+
 </android.support.constraint.ConstraintLayout>

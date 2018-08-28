@@ -139,9 +139,11 @@
                 android:name="injappcenter_and.inumarket_android.Fragment.main_product"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout="@layout/fragment_main_product" />
+
         </android.support.constraint.ConstraintLayout>
         <fragment
             tools:layout="@layout/fragment_categorydraw"
