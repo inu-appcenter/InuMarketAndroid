@@ -18,7 +18,7 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("login")
     public Call<LoginResult>
-    login(@Field("id") String id, @Field("passwd") String passwd);
+    login(@Field("id") String id, @Field("passwd") String passwd,@Field("FCM") String FCM);
 
     @FormUrlEncoded
     @POST("stateChange/newPassword")

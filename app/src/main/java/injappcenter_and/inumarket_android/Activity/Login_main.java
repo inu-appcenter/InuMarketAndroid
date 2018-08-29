@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import injappcenter_and.inumarket_android.Model.LoginResult;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Retrofit.Singleton;
@@ -77,10 +79,11 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
             {
                 String userid = id_e_txt.getText().toString();
                 String userpw = pw_e_txt.getText().toString();
+                String FCM = FirebaseInstanceId.getInstance().getToken();
 
                 if((userid.length()==9)&&(userpw.length()>0)) {
                     errtxt_noinput.setVisibility(View.INVISIBLE);
-                    Singleton.retrofit.login(userid, userpw).enqueue(new Callback<LoginResult>() {
+                    Singleton.retrofit.login(userid, userpw,FCM).enqueue(new Callback<LoginResult>() {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                             if (response.isSuccessful()) {
