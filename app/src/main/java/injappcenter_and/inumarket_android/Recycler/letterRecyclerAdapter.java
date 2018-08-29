@@ -1,6 +1,5 @@
 package injappcenter_and.inumarket_android.Recycler;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import injappcenter_and.inumarket_android.Activity.letter_send;
 import injappcenter_and.inumarket_android.Model.letterDataHeader;
@@ -67,154 +65,58 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             header.Rclayout.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    data.add(position+1,new letterDataHeader(LDH.getSenderName(),LDH.getSenderTel(),LDH.getCategory(),LDH.getProductName(),LDH.isLetterRead(),1));
-                    notifyItemInserted(position+1);
+                    if(LDH.getLetterDataChild() == null){
+                        int position = data.indexOf(LDH);
+                        data.add(position+1,new letterDataHeader(LDH.getProductName(),LDH.getSenderName(),LDH.getSenderTel(),LDH.getCategory(),LDH.isLetterRead(),1, LDH));
+                        LDH.setLetterDataChild(LDH);
+                        notifyItemInserted(position+1);
+                    }
+                    else{
+                        int position = data.indexOf(LDH.getLetterDataChild());
+                        data.remove(position+1);
+                        notifyItemRemoved(position+1);
+                        LDH.setLetterDataChild(null);
+                    }
+
                 }
             });
         }
         else{
             ListChildViewHolder child = (ListChildViewHolder) holder;
 
-            child.child_content.setText(LDH.getSenderName()+LDH.getSenderTel());
+            child.child_content.setText(LDH.getSenderName()+"\n"+"전화번호 : "+LDH.getSenderTel());
+
+            child.close_btn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int position = data.indexOf(LDH);
+                    data.remove(position);
+                    LDH.getLetterDataChild().setLetterDataChild(null);
+                    notifyItemRemoved(position);
+
+                    System.out.println(position);
+                    System.out.println(LDH.getLetterDataChild());
+                }
+
+            });
+
+            child.send_btn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(),letter_send.class );
+                    intent.putExtra("tel",LDH.getSenderTel());
+                    intent.putExtra("name",LDH.getSenderName());
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
-
-
-
-
-        /*final Item item = data.get(position);*/
-        /*switch(item.type){
-            case HEADER:*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-               /* final ListHeaderViewHolder itemController = (ListHeaderViewHolder) holder;
-                itemController.refferaItem = item;
-                itemController.header_title.setText(item.text);
-                if(item.isRead == null) {
-                    itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
-                }
-                else{
-                    itemController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
-                }
-
-                itemController.Rclayout.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println(item.invisibleChildren);
-                        if(item.invisibleChildren == null){
-                            item.invisibleChildren = new ArrayList<Item>();
-//                            int count = 0;
-                            int pos = data.indexOf(itemController.refferaItem);
-                            while (data.size() > pos + 1 && data.get(pos + 1).type == CHILD) {
-                                item.invisibleChildren.add(data.remove(pos + 1));
-//                                count++;
-                            }
-//                            System.out.println(pos);
-//                            System.out.println(count);
-                            notifyItemRemoved(pos+1);
-//                            System.out.println(item.invisibleChildren);
-                            // itemController.btn_expand_toggle.setImageResource(R.drawable.letter_read);
-                        }
-                        else{
-                            int pos = data.indexOf(itemController.refferaItem);
-                            int index = pos +1;
-                            for(Item i : item.invisibleChildren) {
-                                data.add(index,i);
-                                index ++;
-                            }
-                            notifyItemRangeInserted(pos + 1, index - pos - 1);
-                            itemController.btn_expand_toggle.setImageResource(R.drawable.letter_opened);
-                            item.invisibleChildren = null;
-                        }
-                    }
-                });
-                break;*/
-            /*case CHILD :
-                final ListChildViewHolder contentController = (ListChildViewHolder) holder;
-//                int[] myHeader = new int[1];
-//                for(int i = position; i >= 0; i--){
-//                    Item tmpItem = data.get(i);
-//                    if(tmpItem.type == HEADER && tmpItem.invisibleChildren != null){
-//                        if(tmpItem.invisibleChildren.get(0) == contentController.contentItem){
-//                             myHeader[0] = i;
-//                        }
-//                    }
-//                }
-                contentController.child_content.setText(data.get(position).text);
-                contentController.contentItem = item;
-
-                contentController.close_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        System.out.println(item.invisibleChildren);
-                        if (item.invisibleChildren == null) {
-                            item.invisibleChildren = new ArrayList<Item>();
-                            int count = 0;
-                            int pos = data.indexOf(contentController.contentItem);
-                            while (data.size() > pos && data.get(pos).type == CHILD) {
-                                item.invisibleChildren.add(data.remove(pos));
-                                count++;
-                            }
-//                            System.out.println(pos);
-//                            System.out.println(count);
-                            notifyItemRangeRemoved(pos, count);
-//                            notifyItemRemoved(pos);
-//                            System.out.println(item.invisibleChildren);
-                        }
-                    }
-                });
-
-                contentController.send_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(),letter_send.class );
-                        v.getContext().startActivity(intent);
-                    }
-                });
-
-                break;*/
-       // }
     }
 
     @Override
     public int getItemViewType(int position) {
         return data.get(position).getType();
     }
-/*
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-*//*
-    class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName;
-        ViewGroup Rclayout;
-        public ViewHolder(View Lview) {
-            super(Lview);
-            //tvName = (TextView) itemView.findViewById(R.id.letter_Rv_Tv);
-            Rclayout = (ViewGroup) Lview.findViewById(R.id.letter_Rv_Vc);
-
-
-        }
-    }*/
 
 
     @Override
@@ -252,28 +154,7 @@ public class letterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
- /*   public static class Item {
-        public int type;
-        public String text;
-        public Boolean bool;
-        public List<Item> invisibleChildren;
-        public List<Item> isRead;
 
-        public Item() {
-
-        }
-
-        public Item(int type, String text) {
-            this.type = type;
-            this.text = text;
-        }
-
-        public Item(String text){
-            this.text = text;
-        }
-
-    }
-*/
 
     public void addItem(letterDataHeader Data)  {
         data.add(Data);

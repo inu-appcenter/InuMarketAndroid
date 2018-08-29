@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="335dp"
+    android:layout_height="352.7dp"
+    android:background="@drawable/square_allradius"
+    >
+
+
+    <TextView
+        android:id="@+id/my_product_di_head"
+        android:layout_width="match_parent"
+        android:layout_height="74.7dp"
+        android:text="상품 상태 변경"
+        android:paddingStart="31dp"
+        android:paddingTop="26.7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:background="@android:color/transparent"
+        />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_product_di_head"
+        android:background="@color/faded_orange"/>
+
+    <TextView
+        android:id="@+id/my_product_di_state"
+        android:layout_width="match_parent"
+        android:layout_height="74.7dp"
+        android:background="@android:color/transparent"
+        android:paddingStart="31dp"
+        android:paddingTop="26.7dp"
+        android:text="판매 완료"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cloudy_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_product_di_state" />
+
+    <TextView
+        android:id="@+id/my_product_di_delete"
+        android:layout_width="match_parent"
+        android:layout_height="74.7dp"
+        android:background="@android:color/transparent"
+        android:paddingStart="31dp"
+        android:paddingTop="26.7dp"
+        android:text="상품 삭제"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_product_di_delete"
+        android:background="@color/cloudy_blue"/>
+
+    <Button
+        android:id="@+id/my_product_di_ok"
+        android:layout_width="168dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="1dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cloudy_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/my_product_di_cancle"
+        app:layout_constraintStart_toEndOf="@+id/my_product_di_ok"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        />
+
+    <Button
+        android:id="@+id/my_product_di_cancle"
+        android:layout_width="168dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="취소"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>

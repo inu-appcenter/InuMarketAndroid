@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ProductDetail">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_productdetail_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pale_salmon"
+        android:layout_marginBottom="385dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_productdetail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:text="전동자전거"
+        android:textSize="18sp"
+        android:textColor="@color/Textgunmetal"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="247dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewpager_productdetail_image"/>
+
+    <TextView
+        android:id="@+id/txt_productdetail_price"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="250000원"
+        android:textSize="24sp"
+        android:textColor="@color/Textgunmetal"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/txt_productdetail_name"
+        app:layout_constraintTop_toBottomOf="@id/txt_productdetail_name"/>
+
+    <TextView
+        android:id="@+id/txt_productdetail_current"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:textSize="14sp"
+        android:text="현재 12명의 학생들이 문의중입니다!"
+        android:textColor="@color/blush_pink"
+        app:layout_constraintStart_toStartOf="@+id/txt_productdetail_name"
+        app:layout_constraintTop_toBottomOf="@+id/txt_productdetail_price" />
+
+
+    <View
+        android:id="@+id/view_productdetail_blank"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="119dp"
+        android:background="@color/backgroundblank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager_productdetail_image" />
+
+    <TextView
+        android:id="@+id/txt_explanation"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:textSize="14sp"
+        android:lines="2"
+        android:text="설명설명\n설명두번째줄"
+        android:textColor="@color/Textgunmetal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_productdetail_blank" />
+
+    <TextView
+        android:id="@+id/txt_productdetail_status"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="18dp"
+        android:text="- 상품 상태 : "
+        android:textColor="@color/warm_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_explanation" />
+
+    <TextView
+        android:id="@+id/txt_productdetail_dealtype"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:text="- 거래 방식 : "
+        android:textColor="@color/warm_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_productdetail_status" />
+
+    <TextView
+        android:id="@+id/txt_productdetail_dealplace"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:text="- 거래 장소 : "
+        android:textColor="@color/warm_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_productdetail_dealtype" />
+
+    <TextView
+        android:id="@+id/txt_productdetail_category"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:text="- 카테고리 : "
+        android:textColor="@color/warm_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_productdetail_dealplace" />
+
+    <Button
+        android:id="@+id/btn_productdetail_otherproduct"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="48dp"
+        android:background="#00ffffff"
+        android:paddingEnd="43.6dp"
+        android:paddingStart="27.4dp"
+        android:text="판매자의 다른 상품 보기"
+        android:textColor="@color/Textgunmetal"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_productdetail_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="#00ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager_productdetail_image"
+        app:srcCompat="@drawable/declare" />
+
+    <Button
+        android:id="@+id/btn_productdetail_question"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:text="쪽지 보내기(문의)"
+        android:background="@drawable/bottom_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageButton
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:id="@+id/btn_productdetail_slideright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewpager_productdetail_image"
+        app:layout_constraintBottom_toBottomOf="@id/viewpager_productdetail_image"
+        app:srcCompat = "@drawable/rightside"
+        android:background="#00ffffff"
+        />
+    <ImageButton
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:id="@+id/btn_productdetail_slideleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewpager_productdetail_image"
+        app:layout_constraintBottom_toBottomOf="@id/viewpager_productdetail_image"
+        app:srcCompat = "@drawable/rightside"
+        android:background="#00ffffff"
+        />
+
+    <injappcenter_and.inumarket_android.Viewpager.CircleIndicator
+        android:id="@+id/indicator_productimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/viewpager_productdetail_image"
+        android:layout_marginBottom="8dp"
+        />
+</android.support.constraint.ConstraintLayout>

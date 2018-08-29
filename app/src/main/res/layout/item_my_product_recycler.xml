@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:id="@+id/my_product_rv_item">
+
+
+    <ImageView
+        android:id="@+id/mp_rv_category"
+        android:layout_width="38dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/mp_rv_tv"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/mp_rv_more"
+        android:layout_width="4dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginTop="17dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/more" />
+
+
+</LinearLayout>

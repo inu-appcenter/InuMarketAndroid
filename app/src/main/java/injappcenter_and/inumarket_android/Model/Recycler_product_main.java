@@ -2,27 +2,29 @@ package injappcenter_and.inumarket_android.Model;
 
 import android.widget.ImageView;
 
+import java.util.List;
+
 public class Recycler_product_main {
 
-    private ImageView product_image;
+    private int product_image;
     private String product_name;
     private String product_cost;
 
-    public Recycler_product_main(){
+    public Recycler_product_main(List image, String name, String price){
 
     }
 
-    public Recycler_product_main(ImageView product_image, String product_name, String product_cost){
+    public Recycler_product_main(int product_image, String product_name, String product_cost){
         this.product_image = product_image;
         this.product_name = product_name;
         this.product_cost = product_cost;
     }
 
-    public ImageView getProduct_image() {
+    public int getProduct_image() {
         return product_image;
     }
 
-    public void setProduct_image(ImageView product_image) {
+    public void setProduct_image(int product_image) {
         this.product_image = product_image;
     }
 

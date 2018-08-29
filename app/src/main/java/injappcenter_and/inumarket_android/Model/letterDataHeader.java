@@ -7,14 +7,19 @@ public class letterDataHeader {
     private String category;
     private boolean letterRead;
     private int type;
+    private letterDataHeader letterDataChild;
 
-    public letterDataHeader(String productName, String senderName, String senderTel, String category, boolean letterRead, int type) {
+
+
+    public letterDataHeader(String productName, String senderName, String senderTel, String category, boolean letterRead, int type, letterDataHeader letterDataChild) {
         this.productName = productName;
         this.senderName = senderName;
         this.senderTel = senderTel;
         this.category = category;
         this.letterRead = letterRead;
         this.type = type;
+
+        this.letterDataChild = letterDataChild;
     }
 
     public String getProductName() {
@@ -64,4 +69,15 @@ public class letterDataHeader {
     public void setType(int type) {
         this.type = type;
     }
+
+    public letterDataHeader getLetterDataChild() {
+        return letterDataChild;
+    }
+
+    public void setLetterDataChild(letterDataHeader letterDataChild) {
+        this.letterDataChild = letterDataChild;
+    }
+
+
 }
+

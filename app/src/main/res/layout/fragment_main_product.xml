@@ -11,23 +11,14 @@
     <!-- TODO: Update blank fragment layout -->
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/fragment_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="157dp"
-
+        android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-
-        <ImageButton
-            android:id="@+id/btn_main_mail"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:src="@android:drawable/ic_dialog_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_ad" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:id="@+id/view_ad"
@@ -35,17 +26,68 @@
             android:layout_height="80dp"
             android:background="#d8d8d8"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_main_timeproduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="29dp"
+            android:text="실시간 상품"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_main_blank" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView_main_product"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="74dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_main_blank">
+
+        </android.support.v7.widget.RecyclerView>
+        <Spinner
+            android:id="@+id/spinner_main"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="29dp"
+            android:background="@drawable/roundshadowbutton"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_main_mail" />
+
+        <View
+            android:id="@+id/view_main_blank"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/backgroundblank"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_main_mail" />
+
+        <Button
+            android:id="@+id/btn_main_mail"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/letterbox"
+            android:paddingLeft="299dp"
+            android:paddingRight="51dp"
+            android:text="0"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_ad" />
+
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

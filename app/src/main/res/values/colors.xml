@@ -5,6 +5,11 @@
     <color name="colorAccent">#000000</color>
     <color name="faded_orange">#f16d67</color>
     <color name="hint_underbar">#f6f8fa</color>
-    <color name="pale_grey">#f6f8fa</color>
+    <color name="Textgunmetal">#475058</color>
+    <color name="backgroundblank">#f4f4f4</color>
     <color name="cloudy_blue">#cad2e2</color>
+    <color name="pale_salmon">#ffb8b8</color>
+    <color name="blush_pink">#ff7c8c</color>
+    <color name="warm_grey">#9b9b9b</color>
+    <color name="grey8">#d8d8d8</color>
 </resources>

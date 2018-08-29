@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import injappcenter_and.inumarket_android.Model.letterDataHeader;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.letterRecyclerAdapter;
@@ -31,43 +28,9 @@ public class BuyTabFragment extends Fragment{
         rcv.addItemDecoration(new DividerItemDecoration(getActivity(),linearLayoutManager.getOrientation()));
         rcv.setLayoutManager(linearLayoutManager);
 
-/*
-        List<letterRecyclerAdapter.Item> list = new ArrayList<>();
-        ArrayList HeaderArray = new ArrayList();
-        ArrayList ChildArray = new ArrayList();
-        ArrayList<String> ReadArray = new ArrayList<String>();*/
-
-
-
-       /* HeaderArray.add("첫번째 쪽지");
-        HeaderArray.add("두번째 쪽지");
-        HeaderArray.add("세번째 쪽지");
-        ChildArray.add("첫번째 쪽지내용");
-        ChildArray.add("두번째 쪽지내용");
-        ChildArray.add("세번째 쪽지내용");
-        ReadArray.add("true");
-        ReadArray.add("false");
-        ReadArray.add("true");*/
-
-        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
-        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
-        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","임동완","010-2167-5629","가전가구기타",false,0));
-
-
-
-
-/*        int i;
-        for(i=0;i<HeaderArray.size();i++){
-            letterRecyclerAdapter.Item places = new letterRecyclerAdapter.Item(letterRecyclerAdapter.HEADER, HeaderArray.get(i).toString());
-            places.invisibleChildren = new ArrayList<>();
-            places.invisibleChildren.add(new letterRecyclerAdapter.Item(letterRecyclerAdapter.CHILD,ChildArray.get(i).toString()));
-            if(ReadArray.get(i).equals("true")){
-                places.isRead = new ArrayList<>();
-                places.isRead.add(new letterRecyclerAdapter.Item(ReadArray.get(i)));
-            }
-            list.add(places);
-        }
-        rcv.setAdapter(new letterRecyclerAdapter(list));*/
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","구매자 이름 : 임동완","010-2167-5629","가전가구기타",false,0,null));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","구매자 이름 : 임동완","010-2167-5629","가전가구기타",false,0,null));
+        rcvAdapter.addItem(new letterDataHeader("첫번째 쪽지","구매자 이름 : 임동완","010-2167-5629","가전가구기타",false,0,null));
 
         rcv.setAdapter(rcvAdapter);
 
