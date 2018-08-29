@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,17 +49,20 @@ public class Fragment_mypage_Drawer extends android.support.v4.app.Fragment impl
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bundle_myproduct:{
-
+                break;
             }
             case R.id.bundle_mymail:{
-
+                break;
             }
             case R.id.bundle_product_regist:{
-
+                break;
             }
             case R.id.bundle_setting:{
                 Intent intent_setting = new Intent(getActivity(), Mypage_Setting.class);
                 startActivity(intent_setting);
+                DrawerLayout drawer = getActivity().findViewById(R.id.drawer);
+                drawer.closeDrawer(Gravity.END);
+                break;
             }
         }
     }

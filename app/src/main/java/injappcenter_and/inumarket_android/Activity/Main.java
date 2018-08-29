@@ -124,14 +124,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
                         //Enter key Action
-                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == event.KEYCODE_ENTER)) {
                             //Enter키눌렀을떄 처리
+                            search_no_ing();
                             Fragment_searchresult searchproduct = new Fragment_searchresult();
                             getFragmentManager().beginTransaction()
                                     .replace(R.id.fragment_Main_product, searchproduct)
                                     .addToBackStack(null)
                                     .commit();
-                            search_no_ing();
                             return true;
                         }
                         return false;
