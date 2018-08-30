@@ -26,12 +26,10 @@
 
     <ImageButton
         android:id="@+id/mp_rv_more"
-        android:layout_width="4dp"
-        android:layout_height="19dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="77dp"
+        android:layout_height="52dp"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/more" />
+        app:srcCompat="@drawable/additional" />
 
 
 </LinearLayout>

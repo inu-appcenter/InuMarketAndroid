@@ -2,6 +2,7 @@ package injappcenter_and.inumarket_android.Recycler;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import injappcenter_and.inumarket_android.Activity.ProductDetail;
 import injappcenter_and.inumarket_android.Activity.myProductChangeDialog;
 import injappcenter_and.inumarket_android.Activity.myProductCustomDialog;
 import injappcenter_and.inumarket_android.Model.myProductData;
@@ -43,30 +45,17 @@ public class myProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         listholder.Rclayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ProductDetail.class);
+                v.getContext().startActivity(intent);
 
             }
         });
         listholder.more_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                final myProductCustomDialog mpDialog = new myProductCustomDialog(inflater.getContext());
-                mpDialog.show();
-
-                mpDialog.setOnDismissListener(new DialogInterface.OnDismissListener(){
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        String selectWhat = mpDialog.getSelectWhat();
-                        if(selectWhat=="delete"){
-                            System.out.println("this is delete dialog");
-                        }
-                        else if(selectWhat == "change"){
-                            System.out.println(listholder.product_name.getText());
-                            final myProductChangeDialog mpCDialog = new myProductChangeDialog(inflater.getContext());
-                            mpCDialog.setProductName(listholder.product_name.getText().toString());
-                            mpCDialog.show();
-                        }
-                    }
-                });
+                final myProductChangeDialog mpCDialog = new myProductChangeDialog(inflater.getContext());
+                mpCDialog.setProductName(listholder.product_name.getText().toString());
+                mpCDialog.show();
             }
         });
 
