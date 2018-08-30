@@ -30,7 +30,7 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
     private TextView errtxt,errtxt_noinput;
     private EditText pw_e_txt,id_e_txt;
     private ImageButton login_btn;
-    private Button join_btn, fgt_pw_btn;
+    private TextView join_btn, fgt_pw_btn;
     private boolean i;
 
     private String loginsuc = "logged in success";

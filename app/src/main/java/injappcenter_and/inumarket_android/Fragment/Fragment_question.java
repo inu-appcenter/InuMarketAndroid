@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import injappcenter_and.inumarket_android.Dialog.Adapter_dialog;
 import injappcenter_and.inumarket_android.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Fragment_question extends Fragment {
 
     @Override
@@ -29,8 +27,11 @@ public class Fragment_question extends Fragment {
                         {
                             rootview.findViewById(R.id.txt_question_noinput).setVisibility(View.VISIBLE);
                         }
-                        else
+                        else {
                             rootview.findViewById(R.id.txt_question_noinput).setVisibility(View.INVISIBLE);
+                            Adapter_dialog dialog_send = new Adapter_dialog(getActivity(),"확인을 누르시면\n문의사항이 전송됩니다.");
+                            dialog_send.show();
+                        }
                     }
                 });
 
