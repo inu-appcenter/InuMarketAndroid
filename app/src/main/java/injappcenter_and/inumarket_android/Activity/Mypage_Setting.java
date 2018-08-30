@@ -49,6 +49,7 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bundle_phonenum:{
+                //전화번호 변경
                 Fragment_phone_change phone_change = new Fragment_phone_change();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.setting, phone_change)
@@ -57,6 +58,7 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.bundle_push:{
+                //푸시 설정페이지
                 Fragment_push_alarm push_alarm = new Fragment_push_alarm();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.setting, push_alarm)
@@ -65,6 +67,7 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.bundle_question:{
+                //문의하기
                 Fragment_question question = new Fragment_question();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.setting, question)
@@ -73,6 +76,7 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.bundle_pwchange:{
+                //비밀번호 변경
                 Fragment_changepw changepw = new Fragment_changepw();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.setting, changepw)
@@ -81,11 +85,15 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.bundle_logout:{
-                //Adapter_dialog dialog_logout = new Adapter_dialog(this);
-
+                //로그아웃 다이얼로그
+                Adapter_dialog dialog_logout
+                        = new Adapter_dialog(this,"확인을 누르시면\n로그아웃됩니다.");
+                dialog_logout.show();
+                //로그아웃 통신 추가
                 break;
             }
             case R.id.bundle_out:{
+                //회원탈퇴 프래그먼트
                 Fragment_member_out out = new Fragment_member_out();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.setting , out)

@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_login_student_id"
         app:layout_constraintTop_toBottomOf="@+id/et_login_student_id" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_login_join"
         android:layout_width="168dp"
         android:layout_height="44dp"
@@ -88,11 +88,10 @@
         android:textColor="#475058"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_login_forgot_pw"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_pw" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_login_forgot_pw"
         android:layout_width="168dp"
         android:layout_height="44dp"
