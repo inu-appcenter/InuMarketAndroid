@@ -1,5 +1,7 @@
 package injappcenter_and.inumarket_android.Server;
 
+import android.support.v4.media.AudioAttributesCompat;
+
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -27,6 +29,6 @@ public interface RetrofitService {
 
     @POST("PSelect/main")
     public Call<MainProductResult>
-    main(@Header("x-access-token") String main_token);
+    main(@Header("x-access-token") String token);
 }
 

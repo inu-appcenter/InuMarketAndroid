@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.Activity.ProductDetail;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
+import injappcenter_and.inumarket_android.Retrofit.Singleton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -60,7 +67,7 @@ public class main_product extends android.support.v4.app.Fragment {
 
 
         String token =  pref.getString("token","");
-/*
+
         if (token != null) {
             Log.d("Sharedpreferences test", "토큰 받은거 확인" + token);
             Singleton.retrofit.main(token).enqueue(new Callback<MainProductResult>() {
@@ -70,24 +77,22 @@ public class main_product extends android.support.v4.app.Fragment {
                     if (response.isSuccessful()) {
                         MainProductResult result = response.body();
                         Log.d("maintest", "메인 상품 로딩성공" + result);
-                        List<MainProductResult> image = result.new
-                        String name = result.productName;
-                        String price = result.productPrice;
-                        int product_image = (int) image.get(0);
-
+                        List<String> image = result.getProductImg();
+                        String name = result.getProductName();
+                        Integer price =result.getProductPrice();
                         do {
-                            list.add(new Recycler_product_main(product_image , name , price));
+                            list.add(new Recycler_product_main(image , name , price.toString()));
                         }while(result != null);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<MainProductResult> call, Throwable t) {
-                    Log.d("fail", "안돼");
+                    Log.d("mainlodfail", "안돼");
                 }
             });
         }
-*/
+
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_main_product);
         recyclerView.setHasFixedSize(true);

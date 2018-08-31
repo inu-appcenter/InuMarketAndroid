@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,9 @@ import static injappcenter_and.inumarket_android.R.id.view_ad;
 import static injappcenter_and.inumarket_android.R.id.visible;
 
 public class Main extends AppCompatActivity implements View.OnClickListener{
+
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long   backPressedTime = 0;
 
     private EditText et_search, et_search_ing;
     private FrameLayout frameLayout;
@@ -140,6 +144,25 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        drawerLayout.closeDrawers();
+
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            backPressedTime = tempTime;
+            Toast.makeText(getApplicationContext(), "버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

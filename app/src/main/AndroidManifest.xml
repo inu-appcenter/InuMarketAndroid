@@ -12,9 +12,9 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity android:name=".Activity.Start_inum" />
-        <activity android:name=".Activity.Login_main" />
+        <activity android:name=".Activity.Main" />
         <activity android:name=".Activity.forgot_pw" />
-        <activity android:name=".Activity.Main">
+        <activity android:name=".Activity.Login_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
