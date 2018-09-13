@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import injappcenter_and.inumarket_android.Dialog.Adapter_dialog_onebutton;
 import injappcenter_and.inumarket_android.Model.LoginResult;
 import injappcenter_and.inumarket_android.Model.forgotpw_Result;
 import injappcenter_and.inumarket_android.R;
@@ -55,11 +56,8 @@ public class forgot_pw extends AppCompatActivity {
                             if (result.getAns()=="true"){
                                 notcollect_txt.setVisibility(View.INVISIBLE);
                                 Log.d("testpasswd",""+result.getAns());
-                                AlertDialog.Builder builder = new AlertDialog.Builder(forgot_pw.this);
-                                builder.setTitle("");
-                                builder.setMessage("인천대 포탈 웹메일로 임시 비밀번호가 발송되었습니다!");
-                                builder.setPositiveButton("확인", null);
-                                builder.show();
+                                Adapter_dialog_onebutton dialog = new Adapter_dialog_onebutton(getApplicationContext());
+                                dialog.show();
                             }
                             else{
                                 notcollect_txt.setVisibility(View.VISIBLE);

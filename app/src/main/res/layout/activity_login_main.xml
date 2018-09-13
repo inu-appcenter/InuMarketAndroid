@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_login_student_id"
         app:layout_constraintTop_toBottomOf="@+id/et_login_student_id" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_login_join"
         android:layout_width="168dp"
         android:layout_height="44dp"
@@ -88,11 +88,10 @@
         android:textColor="#475058"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_login_forgot_pw"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_pw" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_login_forgot_pw"
         android:layout_width="168dp"
         android:layout_height="44dp"
@@ -102,7 +101,7 @@
         android:gravity="center"
         android:textColor="#475058"
         android:background="#ffffffff"
-        android:text="*패스워드 분실"
+        android:text="패스워드 분실"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/btn_login_join"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,6 +158,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_mainpage" />
+
+    <CheckBox
+        android:id="@+id/checkBox_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="10dp"
+        android:text="자동 로그인"
+        android:textSize="12sp"
+        android:textColor="@color/Textgunmetal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_login_pw" />
 
 
 </android.support.constraint.ConstraintLayout>

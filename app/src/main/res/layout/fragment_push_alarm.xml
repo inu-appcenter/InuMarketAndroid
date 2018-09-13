@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.Fragment_push_alarm"
+    android:clickable="true"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/txt_push"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="20dp"
+            android:text="푸시 알림 설정"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_push_partition"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="65dp"
+            android:background="@color/backgroundblank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/bundle_push_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_push_partition">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:text="푸시 알림"
+                android:textColor="@color/Textgunmetal"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f3f3f5"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_push"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginEnd="14dp"
+                android:background="#00ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/bundle_phone_setting"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bundle_push_alarm">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:text="환경설정 바로가기"
+                android:textColor="@color/Textgunmetal"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f3f3f5"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_push_setting"
+            android:layout_width="match_parent"
+            android:layout_height="53.8dp"
+            android:background="@drawable/bottom_confirm"
+            android:text="설정 완료"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

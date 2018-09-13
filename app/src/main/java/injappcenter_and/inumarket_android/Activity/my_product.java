@@ -1,11 +1,14 @@
 package injappcenter_and.inumarket_android.Activity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 
 import injappcenter_and.inumarket_android.Model.myProductData;
@@ -22,6 +25,11 @@ public class my_product extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
         setContentView(R.layout.activity_my_product);
         rcv = (RecyclerView) findViewById(R.id.my_product_rv_form);
         rcvAdapter = new myProductAdapter();
@@ -29,9 +37,6 @@ public class my_product extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcv.addItemDecoration(new DividerItemDecoration(this,linearLayoutManager.getOrientation()));
         rcv.setLayoutManager(linearLayoutManager);
-
-
-
 
         rcvAdapter.addItem(new myProductData("fdsafasd","첫번째 물품","가전가구",false));
         rcvAdapter.addItem(new myProductData("vjklasdf","두번째 물품","가전가구",false));

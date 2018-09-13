@@ -1,79 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".Fragment.Fragment_category_book_product">
 
-    <TextView
-        android:id="@+id/txt_catetory_book_num"
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="20dp"
-        android:text="책 - 16호관"
-        android:textColor="@color/Textgunmetal"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginTop="20dp"
-        android:text=" 카테고리 상품"
-        android:textColor="@color/Textgunmetal"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_catetory_book_num"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/image_book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:layout_marginTop="26.5dp"
-        android:src="@drawable/book"
-        app:layout_constraintEnd_toStartOf="@+id/txt_catetory_book_num"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view_category_book_partition"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginTop="65dp"
-        android:background="@color/backgroundblank"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_Main_categoryproduct_xml"
+        >
+        <TextView
+            android:id="@+id/txt_catetory_book_num"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="20dp"
+            android:text="책 - 16호관"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_category_book"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="29.9dp"
-        android:background="#00ffffff"
-        android:textColor="@color/Textgunmetal"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_category_book_partition" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginEnd="54dp"
+            android:layout_marginTop="20dp"
+            android:text=" 카테고리 상품"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_catetory_book_num"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView_category_book"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_category_book" />
+        <ImageView
+            android:id="@+id/image_category_product_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="13dp"
+            android:layout_marginTop="26.5dp"
+            android:src="@drawable/book"
+            app:layout_constraintEnd_toStartOf="@+id/txt_catetory_book_num"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_category_book_partition"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="65dp"
+            android:background="@color/backgroundblank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_category_book"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="29.9dp"
+            android:background="#00ffffff"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_category_book_partition" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_category_book"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="145.9dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_category_book" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

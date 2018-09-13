@@ -1,40 +1,49 @@
 package injappcenter_and.inumarket_android.Model;
 
-import android.widget.ImageView;
-
+import java.util.List;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class MainProductResult {
+
     @SerializedName("productImg")
-    public ImageView productImg;
+    @Expose
+    private List<String> productImg = null;
 
     @SerializedName("productId")
-    public String productId;
+    @Expose
+    private String productId;
 
     @SerializedName("productName")
-    public String productName;
-
+    @Expose
+    private String productName;
     @SerializedName("productPrice")
-    public String productPrice;
-
+    @Expose
+    private Integer productPrice;
     @SerializedName("category")
-    public String category;
-
+    @Expose
+    private String category;
     @SerializedName("productSelled")
-    public String productSelled;
-
+    @Expose
+    private Boolean productSelled;
     @SerializedName("updateDate")
-    public String updateDate;
-
+    @Expose
+    private String updateDate;
+    @SerializedName("sellerName")
+    @Expose
+    private String sellerName;
+    @SerializedName("sellerPhone")
+    @Expose
+    private String sellerPhone;
     @SerializedName("__v")
-    public String __v;
+    @Expose
+    private Integer v;
 
-
-    public ImageView getProductImg() {
+    public List<String> getProductImg() {
         return productImg;
     }
 
-    public void setProductImg(ImageView productImg) {
+    public void setProductImg(List<String> productImg) {
         this.productImg = productImg;
     }
 
@@ -54,11 +63,11 @@ public class MainProductResult {
         this.productName = productName;
     }
 
-    public String getProductPrice() {
+    public Integer getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(Integer productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -70,11 +79,11 @@ public class MainProductResult {
         this.category = category;
     }
 
-    public String getProductSelled() {
+    public Boolean getProductSelled() {
         return productSelled;
     }
 
-    public void setProductSelled(String productSelled) {
+    public void setProductSelled(Boolean productSelled) {
         this.productSelled = productSelled;
     }
 
@@ -86,11 +95,28 @@ public class MainProductResult {
         this.updateDate = updateDate;
     }
 
-    public String get__v() {
-        return __v;
+    public String getSellerName() {
+        return sellerName;
     }
 
-    public void set__v(String __v) {
-        this.__v = __v;
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
+
+    public String getSellerPhone() {
+        return sellerPhone;
+    }
+
+    public void setSellerPhone(String sellerPhone) {
+        this.sellerPhone = sellerPhone;
+    }
+
+    public Integer getV() {
+        return v;
+    }
+
+    public void setV(Integer v) {
+        this.v = v;
+    }
+
 }

@@ -66,7 +66,7 @@ public class Fragment_category_electronic_product extends Fragment {
         mLayoutManager = new GridLayoutManager(getActivity(),3);
 
         for (int i = 0 ; i<12 ; i ++) {
-            list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격"));
+            list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격",""));
         }
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

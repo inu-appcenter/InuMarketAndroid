@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".Activity.sellerProduct">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_product"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="96dp"
+        android:scaleY="-1"
+        app:tabGravity="fill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@color/faded_orange"
+        app:tabIndicatorHeight="4dp"
+        app:tabSelectedTextColor="@color/faded_orange"
+        app:tabTextColor="@color/cloudy_blue">
+
+    </android.support.design.widget.TabLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_sellerprouct"
+        >
+
+        <TextView
+            android:id="@+id/txt_sellerproduct_name"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginTop="18dp"
+            android:text="'전동 자전거'"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_otherproduct"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="2dp"
+            android:text="판매자의 다른 상품"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_sellerproduct_name" />
+
+        <View
+            android:id="@+id/view_partition"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/icon_partition"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_otherproduct" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_sellerproduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="183dp"
+            android:background="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_partition">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

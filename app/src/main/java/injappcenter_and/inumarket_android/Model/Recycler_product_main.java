@@ -9,15 +9,25 @@ public class Recycler_product_main {
     private int product_image;
     private String product_name;
     private String product_cost;
+    private String product_id;
 
-    public Recycler_product_main(List image, String name, String price){
+    public Recycler_product_main(List image, String name, String price, String product_id){
 
     }
 
-    public Recycler_product_main(int product_image, String product_name, String product_cost){
+    public Recycler_product_main(int product_image, String product_name, String product_cost, String product_id){
         this.product_image = product_image;
         this.product_name = product_name;
         this.product_cost = product_cost;
+        this.product_id = product_id;
+    }
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
     }
 
     public int getProduct_image() {

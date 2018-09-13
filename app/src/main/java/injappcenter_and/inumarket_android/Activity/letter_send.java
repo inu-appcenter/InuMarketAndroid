@@ -1,7 +1,9 @@
 package injappcenter_and.inumarket_android.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,12 @@ public class letter_send extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_send);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
         Intent intent = getIntent();
         final String tel = intent.getStringExtra("tel");
         final String name = intent.getStringExtra("name");

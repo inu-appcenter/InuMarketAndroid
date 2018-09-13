@@ -35,9 +35,10 @@
 
         <ExpandableListView
             android:id="@+id/expandablelist_category"
-            android:layout_width="287dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             android:layout_marginTop="86dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

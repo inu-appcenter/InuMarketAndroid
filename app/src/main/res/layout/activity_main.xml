@@ -19,7 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -55,86 +54,55 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/mypage" />
 
-            <FrameLayout
-                android:id="@+id/frameLayout_main"
+            <EditText
+                android:id="@+id/et_main_search"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="29dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="13dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/square_search_allradius"
+                android:ems="10"
+                android:hint="찾고있는 상품을 입력하세요"
+                android:inputType="text"
+                android:letterSpacing="-0.07"
+                android:paddingStart="45dp"
+                android:textColorHint="#9b9b9b"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_main_search_cancle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                <EditText
-                    android:id="@+id/et_main_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginStart="13dp"
-                    android:background="@drawable/search_"
-                    android:ems="10"
-                    android:hint="찾고있는 상품을 입력하세요"
-                    android:inputType="text"
-                    android:letterSpacing="-0.07"
-                    android:paddingStart="45dp"
-                    android:textColorHint="#9b9b9b"
-                    android:textSize="16sp"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/bundle_main_search_ing"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView"
-                    android:visibility="invisible"
-                    >
-                    <EditText
-                        android:id="@+id/et_main_search_ing"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="68dp"
-                        android:layout_marginStart="12dp"
-                        android:background="@drawable/search_short"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:paddingStart="46dp"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+            <ImageButton
+                android:id="@+id/btn_main_search_erase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="68dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/erase"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_main_mypage" />
 
-                    <ImageButton
-                        android:id="@+id/btn_main_search_erase"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="68dp"
-                        android:layout_marginTop="29dp"
-                        android:background="#00FFFFFF"
-                        android:src="@drawable/erase"
-                        app:layout_constraintEnd_toEndOf="parent"
-                         />
+            <Button
+                android:id="@+id/btn_main_search_cancle"
+                android:layout_width="61dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="21dp"
+                android:background="#00FFFFFF"
+                android:paddingTop="14dp"
+                android:gravity="center_horizontal"
+                android:text="취소"
+                android:visibility="invisible"
+                android:textColor="@color/Textgunmetal"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_main_mypage" />
 
-                    <Button
-                        android:id="@+id/btn_main_search_cancle"
-                        android:layout_width="61dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginTop="29dp"
-                        android:background="#00FFFFFF"
-                        android:paddingBottom="14dp"
-                        android:paddingTop="17dp"
-                        android:text="취소"
-                        android:textColor="#475058"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </FrameLayout>
-
-            <fragment
+            <FrameLayout
                 android:id="@+id/fragment_Main_product"
                 android:name="injappcenter_and.inumarket_android.Fragment.main_product"
                 android:layout_width="match_parent"
@@ -142,7 +110,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout="@layout/fragment_main_product" />
+
+            <ImageView
+                android:id="@+id/image_main_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/et_main_search"
+                app:layout_constraintStart_toStartOf="@+id/et_main_search"
+                app:layout_constraintTop_toTopOf="@+id/et_main_search"
+                app:srcCompat="@drawable/search" />
+
         </android.support.constraint.ConstraintLayout>
+
         <fragment
             tools:layout="@layout/fragment_categorydraw"
             android:layout_width="323dp"

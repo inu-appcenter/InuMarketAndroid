@@ -23,8 +23,8 @@ import injappcenter_and.inumarket_android.R;
 
 public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapter.ViewHolder> {
 
-    public ArrayList<Recycler_product_main> mDataset;
-    private ItemClick itemClick;
+    public ArrayList<Recycler_product_main> mDataset = new ArrayList<>();
+    public ItemClick itemClick;
     public interface ItemClick{
         public void onClick(View view, int position);
     }
@@ -34,25 +34,27 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
     }
 
     // Data is passed into the constructor
+    public Mainproduct_Adapter(){
+
+    }
     public Mainproduct_Adapter(ArrayList<Recycler_product_main> myData) {
-        this.mDataset = myData;
+        this.mDataset.addAll(myData);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView productimg;
         public TextView name,price;
+        public String productid;
 
         public ViewHolder(View itemView){
             super(itemView);
             productimg = itemView.findViewById(R.id.view_main_product_image);
             name = itemView.findViewById(R.id.txt_main_productname);
             price =itemView.findViewById(R.id.txt_main_productprice);
-            //itemView.setOnClickListener(this);
         }
 
     }
 
-    // Inflates the cell layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
