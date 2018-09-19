@@ -111,6 +111,11 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 //Enter key Action
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == event.KEYCODE_ENTER)) {
                     //Enter키눌렀을떄 처리
+                    ViewGroup.LayoutParams param = et_search.getLayoutParams();
+
+                    param.width = MATCH_PARENT;
+                    et_search.setLayoutParams(param);
+
                     et_search.clearFocus();
                     Fragment_searchresult searchproduct = new Fragment_searchresult();
                     getFragmentManager().beginTransaction()
