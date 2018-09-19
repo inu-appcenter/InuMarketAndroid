@@ -85,6 +85,7 @@
         <TableRow>
 
             <RadioGroup
+                android:id="@+id/rg_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="53.5dp"
                 android:orientation="horizontal"

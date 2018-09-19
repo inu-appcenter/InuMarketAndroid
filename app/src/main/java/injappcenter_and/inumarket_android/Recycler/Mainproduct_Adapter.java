@@ -1,29 +1,26 @@
 package injappcenter_and.inumarket_android.Recycler;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
+import injappcenter_and.inumarket_android.Config;
+import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.R;
 
 
 
 public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapter.ViewHolder> {
 
-    public ArrayList<Recycler_product_main> mDataset = new ArrayList<>();
+    public ArrayList<MainProductResult> mDataset = new ArrayList<>();
     public ItemClick itemClick;
     public interface ItemClick{
         public void onClick(View view, int position);
@@ -37,7 +34,7 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
     public Mainproduct_Adapter(){
 
     }
-    public Mainproduct_Adapter(ArrayList<Recycler_product_main> myData) {
+    public Mainproduct_Adapter(ArrayList<MainProductResult> myData) {
         this.mDataset.addAll(myData);
     }
 
@@ -48,7 +45,7 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
 
         public ViewHolder(View itemView){
             super(itemView);
-            productimg = itemView.findViewById(R.id.view_main_product_image);
+            productimg = itemView.findViewById(R.id.image_main_product);
             name = itemView.findViewById(R.id.txt_main_productname);
             price =itemView.findViewById(R.id.txt_main_productprice);
         }
@@ -64,10 +61,10 @@ public class Mainproduct_Adapter extends RecyclerView.Adapter<Mainproduct_Adapte
 
     @Override
     public void onBindViewHolder(@NonNull Mainproduct_Adapter.ViewHolder holder, final int position) {
-        holder.productimg.setImageResource(mDataset.get(position).getProduct_image());
-        holder.name.setText(mDataset.get(position).getProduct_name());
-        holder.price.setText(mDataset.get(position).getProduct_cost());
-
+//        holder.productimg.setImageResource(mDataset.get(position).getProduct_image());
+        holder.name.setText(mDataset.get(position).getProductName());
+        holder.price.setText(mDataset.get(position).getProductPrice() + "");
+        Glide.with(holder.productimg).load(Config.serverUrl + "imgload/" + mDataset.get(position).getProductImg().get(0)).into(holder.productimg);
         holder.itemView.setOnClickListener(new View.OnClickListener(){
 
             @Override

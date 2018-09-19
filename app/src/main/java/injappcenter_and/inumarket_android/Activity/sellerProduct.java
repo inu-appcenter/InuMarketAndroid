@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
+import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.Model.nonSellResult;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class sellerProduct extends AppCompatActivity {
     RecyclerView recyclerView;
     Mainproduct_Adapter mAdapter;
-    ArrayList<Recycler_product_main> list = new ArrayList<>();
+    ArrayList<MainProductResult> list = new ArrayList<>();
     private TabLayout tabLayout;
     SharedPreferences pref;
     String productid, name;
@@ -69,12 +69,12 @@ public class sellerProduct extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ArrayList<nonSellResult> result = response.body();
                     Log.d("nonselltest", "판매자로 물건조회" + result.get(0).getProductId());
-                    for (int i = 0 ; i < result.size() ; i++){
-                        name = result.get(i).getProductName();
-                        price = result.get(i).getProductPrice();
-                        productid = result.get(i).getProductId();
-                        list.add(new Recycler_product_main(R.color.grey8 , name , String.valueOf(price), productid));
-                    }
+//                    for (int i = 0 ; i < result.size() ; i++){
+//                        name = result.get(i).getProductName();
+//                        price = result.get(i).getProductPrice();
+//                        productid = result.get(i).getProductId();
+//                        list.add(new Recycler_product_main(R.color.grey8 , name , String.valueOf(price), productid));
+//                    }
                 }
             }
 

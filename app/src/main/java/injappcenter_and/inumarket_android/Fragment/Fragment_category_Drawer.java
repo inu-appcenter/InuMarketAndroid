@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import java.util.Arrays;
 import java.util.Vector;
@@ -30,12 +32,12 @@ public class Fragment_category_Drawer extends Fragment {
        Drawer = (FrameLayout) inflater.inflate(R.layout.fragment_categorydraw,container,false);
 
         categoryListView = Drawer.findViewById(R.id.expandablelist_category);
-        Category_Parent item1 = new Category_Parent(R.drawable.book,"책",R.drawable.list_updown);
-        Category_Parent item2 = new Category_Parent(R.drawable.cloth,"의류",R.drawable.list_updown);
-        Category_Parent item3 = new Category_Parent(R.drawable.electric,"가전/가구",R.drawable.list_updown);
-        Category_Parent item4 = new Category_Parent(R.drawable.etc,"잡화",R.drawable.list_updown);
-        Category_Parent item5 = new Category_Parent(R.drawable.room,"자취방",R.drawable.list_updown);
-        Category_Parent item6 = new Category_Parent(R.drawable.ticket,"식권",R.drawable.list_updown);
+        Category_Parent item1 = new Category_Parent(R.drawable.book,"책");
+        Category_Parent item2 = new Category_Parent(R.drawable.cloth,"의류");
+        Category_Parent item3 = new Category_Parent(R.drawable.electric,"가전/가구");
+        Category_Parent item4 = new Category_Parent(R.drawable.etc,"잡화");
+        Category_Parent item5 = new Category_Parent(R.drawable.room,"자취방");
+        Category_Parent item6 = new Category_Parent(R.drawable.ticket,"식권");
         final Category_Parent List[] = new Category_Parent[] {item1,item2,item3,item4,item5,item6};
 
         String[] string_item;
@@ -97,31 +99,54 @@ public class Fragment_category_Drawer extends Fragment {
         categoryListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                int image = List[groupPosition].getCategory_image();
+                String namechild = List[groupPosition].child.get(childPosition).getChildname();
+                String nameparent = List[groupPosition].getCategory_name();
 
-//                LayoutInflater inflater_ = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                View viewcategory = inflater_.inflate(R.layout.fragment_category_book_product, null);
-//
-//                ImageView category_icon = viewcategory.findViewById(R.id.image_category_product_icon);
-//                TextView category_name = viewcategory.findViewById(R.id.txt_catetory_book_num);
-//
-//                int image = List[groupPosition].getCategory_image();
-//                String namechild = List[groupPosition].child.get(childPosition).getChildname();
-//                String nameparent = List[groupPosition].getCategory_name();
-//
-//                category_name.setText(nameparent + "-" + namechild);
-//                category_icon.setImageResource(image);
+                Bundle bundle = new Bundle();
+                bundle.putString("child",namechild);
+                bundle.putString("parent",nameparent);
+                bundle.putInt("categoryimage", image);
 
-                Fragment_category_book_product categoryproduct = new Fragment_category_book_product();
-                getActivity().getFragmentManager().beginTransaction()
-                        .replace(R.id.container, categoryproduct)
-                        .addToBackStack(null)
-                        .commit();
+                if (nameparent.equals("가전/가구")){
+                    Fragment_category_electronic_product category_electronic_product = new Fragment_category_electronic_product();
+                    category_electronic_product.setArguments(bundle);
+
+                    getActivity().getFragmentManager().beginTransaction()
+                            .replace(R.id.container, category_electronic_product)
+                            .addToBackStack(null)
+                            .commit();
+                }
+                else {
+                    Fragment_category_book_product categoryproduct = new Fragment_category_book_product();
+                    categoryproduct.setArguments(bundle);
+
+                    getActivity().getFragmentManager().beginTransaction()
+                            .replace(R.id.container, categoryproduct)
+                            .addToBackStack(null)
+                            .commit();
+                }
 
                 DrawerLayout drawer = getActivity().findViewById(R.id.drawer);
                 drawer.closeDrawer(Gravity.START);
 
-                //    categoryListView.collapseGroup(groupPosition);
+                categoryListView.collapseGroup(groupPosition);
 
+                return false;
+            }
+        });
+
+        categoryListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                parent.smoothScrollToPosition(groupPosition);
+                ImageView iv = v.findViewById(R.id.image_expandbtn);
+
+                if (parent.isGroupExpanded(groupPosition)) {
+                    iv.setImageResource(R.drawable.list_down);
+                } else {
+                    iv.setImageResource(R.drawable.list_up);
+                }
                 return false;
             }
         });

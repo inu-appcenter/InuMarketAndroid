@@ -39,14 +39,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetail extends AppCompatActivity implements View.OnClickListener{
-
     Button seller;
     public int[] ImageResource;
     ImageView[] dots;
     LinearLayout pager_indicator;
     private ViewPager viewPager;
     private List<String> numberList;
-    private CircleIndicator circleIndicator;
+    me.relex.circleindicator.CircleIndicator circleIndicator;
+    //private CircleIndicator
     PagerAdapter_product viewPagerAdapter;
     ImageButton btnClosePopup, btnClose;
     PopupWindow pwindo,pwsendindo;
@@ -92,7 +92,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         Log.d("requesttest",productid);
 
         pref = getSharedPreferences("userinfo",MODE_PRIVATE);
-        String token =  pref.getString("token","");
+        String token = pref.getString("token","");
 
         if ( productid != null) {
             Log.d("token,id", "토큰 받은거 확인" + token);
@@ -142,34 +142,16 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                 R.color.warm_grey
         };
 
-        initLayout();
-        init();
-}
-    private void initLayout(){
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager_productdetail_image);
-        circleIndicator = (CircleIndicator) findViewById(R.id.indicator_productimage);
-    }
-
-    private void init(){
-        initViewPager();
-    }
-
-    private void initViewPager(){
-
         viewPagerAdapter = new PagerAdapter_product(getApplicationContext(),ImageResource);
+        viewPager = (ViewPager) findViewById(R.id.viewpager_productdetail_image);
         viewPager.setAdapter(viewPagerAdapter);
+
+        circleIndicator = findViewById(R.id.indicator_productimage);
+        circleIndicator.setViewPager(viewPager);
+
+        viewPagerAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
 
-        //Indicator 초기화
-        initIndicaotor();
-    }
-
-    private void initIndicaotor(){
-
-        //원사이의 간격
-        circleIndicator.setItemMargin(9);
-        circleIndicator.createDotPanel(ImageResource.length, R.drawable.default_dot , R.drawable.selected_dot);
     }
 
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -179,9 +161,8 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
         @Override
         public void onPageSelected(int position) {
-            circleIndicator.selectDot(position);
-        }
 
+        }
         @Override
         public void onPageScrollStateChanged(int state) {
         }
@@ -271,5 +252,4 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             e.printStackTrace();
         }
     }
-
 }

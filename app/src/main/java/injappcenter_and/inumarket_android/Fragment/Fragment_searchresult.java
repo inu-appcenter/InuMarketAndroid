@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Activity.ProductDetail;
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
+import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
 import retrofit2.Retrofit;
@@ -29,7 +29,7 @@ public class Fragment_searchresult extends Fragment {
         Retrofit retrofit;
         RecyclerView recyclerView;
         Mainproduct_Adapter mAdapter;
-        ArrayList<Recycler_product_main> list = new ArrayList<>();
+        ArrayList<MainProductResult> list = new ArrayList<>();
         Spinner spinner;
         String[] spinneritem = {"최신 상품 순", "높은 가격 순", "낮은 가격 순"};
         SharedPreferences pref;
@@ -70,10 +70,10 @@ public class Fragment_searchresult extends Fragment {
             });
             RecyclerView.LayoutManager mLayoutManager;
             mLayoutManager = new GridLayoutManager(getActivity(),3);
-
-            for (int i = 0 ; i<12 ; i ++) {
-                list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격",""));
-            }
+//
+//            for (int i = 0 ; i<12 ; i ++) {
+//                list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격",""));
+//            }
             recyclerView.setLayoutManager(mLayoutManager);
          //   recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(mAdapter);

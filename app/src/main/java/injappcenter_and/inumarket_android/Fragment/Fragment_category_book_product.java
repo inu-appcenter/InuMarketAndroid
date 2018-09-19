@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Activity.ProductDetail;
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
+import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
 
@@ -26,9 +28,15 @@ import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
 public class Fragment_category_book_product extends Fragment {
     RecyclerView recyclerView;
     Mainproduct_Adapter mAdapter;
-    ArrayList<Recycler_product_main> list = new ArrayList<>();
-    Spinner spinner;
-    String[] spinneritem = {"최신 상품", "높은 가격", "낮은 가격"};
+    ArrayList<MainProductResult> list = new ArrayList<>();
+//    Spinner spinner;
+//    String[] spinneritem = {"최신 상품", "높은 가격", "낮은 가격"};
+
+    TextView txt_category;
+    ImageView img_category;
+    String parent,child;
+    Integer catimage;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,23 +45,32 @@ public class Fragment_category_book_product extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_category_book_product,null);
+        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_category_book_product,container,false);
 
-        spinner = rootview.findViewById(R.id.spinner_category_book);
-        ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, spinneritem);
-        sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(sAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
+//        spinner = rootview.findViewById(R.id.spinner_category_elec);
+//        ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, spinneritem);
+//        sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(sAdapter);
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        parent = getArguments().getString("parent","");
+        child = getArguments().getString("child","");
+        catimage = getArguments().getInt("categoryimage");
 
-            }
-        });
+        txt_category = rootview.findViewById(R.id.txt_category_name_num);
+        img_category = rootview.findViewById(R.id.image_category_product_icon);
 
+        txt_category.setText(parent +" - "+ child);
+        img_category.setImageResource(catimage);
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_category_book);
         recyclerView.setHasFixedSize(true);
@@ -68,14 +85,9 @@ public class Fragment_category_book_product extends Fragment {
         RecyclerView.LayoutManager mLayoutManager;
         mLayoutManager = new GridLayoutManager(getActivity(),3);
 
-        for (int i = 0 ; i<12 ; i ++) {
-            list.add(new Recycler_product_main(R.color.grey8,"상품이름","가격","id"));
-        }
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
         return rootview;
     }
-
 }

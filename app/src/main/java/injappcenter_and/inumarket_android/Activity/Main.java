@@ -1,61 +1,30 @@
 package injappcenter_and.inumarket_android.Activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
-import android.opengl.Visibility;
 import android.os.Build;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.NavigationView;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.INotificationSideChannel;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewParent;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import injappcenter_and.inumarket_android.Fragment.Fragment_searchresult;
 import injappcenter_and.inumarket_android.Fragment.main_product;
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
 import injappcenter_and.inumarket_android.R;
 
-import static injappcenter_and.inumarket_android.R.id.drawer;
-import static injappcenter_and.inumarket_android.R.id.fragment_Main_product;
-import static injappcenter_and.inumarket_android.R.id.fragment_category;
-import static injappcenter_and.inumarket_android.R.id.btn_main_search_cancle;
-import static injappcenter_and.inumarket_android.R.id.container;
-import static injappcenter_and.inumarket_android.R.id.drawer_main_category;
-import static injappcenter_and.inumarket_android.R.id.invisible;
-import static injappcenter_and.inumarket_android.R.id.view;
-import static injappcenter_and.inumarket_android.R.id.view_ad;
-import static injappcenter_and.inumarket_android.R.id.visible;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class Main extends AppCompatActivity implements View.OnClickListener{
 
@@ -65,7 +34,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     private Fragment category,mypage;
     DrawerLayout cDrawer;
     DrawerLayout mDrawer;
-    public ConstraintLayout search_ing;
 
     private final long FINISH_INTERVAL_TIME = 2000;
     private long   backPressedTime = 0;
@@ -103,7 +71,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         fragmentTransaction.replace(R.id.fragment_Main_product,product)
         .commit();
 
-
         et_search = findViewById(R.id.et_main_search);
         final Button btn_searchcancle = findViewById(R.id.btn_main_search_cancle);
         final ImageButton btn_search_erase = findViewById(R.id.btn_main_search_erase);
@@ -111,16 +78,29 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         btn_searchcancle.setOnClickListener(this);
         btn_search_erase.setOnClickListener(this);
 
+
         et_search.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (hasFocus) {
+                    float mScale = getResources().getDisplayMetrics().density;
+                    int w = 285;
+
+                    int cwidth = (int) (w*mScale);
+                    ViewGroup.LayoutParams param = et_search.getLayoutParams();
+
+                    param.width = cwidth;
+                    et_search.setLayoutParams(param);
+
                     btn_search_erase.setVisibility(View.VISIBLE);
                     btn_searchcancle.setVisibility(View.VISIBLE);
                     findViewById(R.id.fragment_Main_product).setVisibility(View.INVISIBLE);
+                    et_search.setHint("");
                 }
-                else {
-                    basicset();
+                else{
+                    findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
+                    findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -131,6 +111,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 //Enter key Action
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == event.KEYCODE_ENTER)) {
                     //Enter키눌렀을떄 처리
+                    et_search.clearFocus();
                     Fragment_searchresult searchproduct = new Fragment_searchresult();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragment_Main_product, searchproduct)
@@ -168,6 +149,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         switch(view.getId()){
             case R.id.btn_main_search_cancle:{
+                et_search.clearFocus();
                 et_search.setVisibility(View.VISIBLE);
                 et_search.setText("");
                 findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
@@ -175,12 +157,20 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 inputMethodManager.hideSoftInputFromWindow(et_search.getWindowToken(),0);
                 findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
                 findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
+                float mScale = getResources().getDisplayMetrics().density;
+                int w = 334;
+
+                int cwidth = (int) (w*mScale);
+                ViewGroup.LayoutParams param = et_search.getLayoutParams();
+
+                param.width = MATCH_PARENT;
+                et_search.setLayoutParams(param);
                 break;
             }
 
             case R.id.btn_main_search_erase: {
                 et_search.setText("");
-                findViewById(R.id.fragment_constraint).setVisibility(View.INVISIBLE);
+                findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
                 break;
             }
             case R.id.btn_category_closedrawer:{
@@ -204,8 +194,5 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void basicset(){
-        findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
-        findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
-        findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
     }
 }

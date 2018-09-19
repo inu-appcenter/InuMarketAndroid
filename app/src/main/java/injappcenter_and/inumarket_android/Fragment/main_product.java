@@ -1,7 +1,5 @@
 package injappcenter_and.inumarket_android.Fragment;
 
-import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,42 +14,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import injappcenter_and.inumarket_android.Activity.ProductDetail;
 import injappcenter_and.inumarket_android.Activity.letter_form;
 import injappcenter_and.inumarket_android.Model.Letter;
 import injappcenter_and.inumarket_android.Model.MainProductResult;
-import injappcenter_and.inumarket_android.Model.Recycler_product_main;
-import injappcenter_and.inumarket_android.Activity.ProductDetail;
 import injappcenter_and.inumarket_android.R;
 import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
 import injappcenter_and.inumarket_android.Retrofit.Singleton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class main_product extends android.support.v4.app.Fragment {
 
     ConstraintLayout btn_mail;
-    Retrofit retrofit;
     RecyclerView recyclerView;
     Mainproduct_Adapter mAdapter;
-    ArrayList<Recycler_product_main> list = new ArrayList<>();
+    ArrayList<MainProductResult> list = new ArrayList<>();
     Spinner spinner;
     String[] spinneritem = {"최신 상품 순", "높은 가격 순", "낮은 가격 순"};
     SharedPreferences pref;
     List<String> product_image;
     private String name, productid;
     Integer price;
+    ImageView productimg;
 
     @Nullable
     @Override
@@ -61,6 +56,8 @@ public class main_product extends android.support.v4.app.Fragment {
         spinner = rootview.findViewById(R.id.spinner_main);
         ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, spinneritem);
         sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        productimg = (ImageView) rootview.findViewById(R.id.image_main_product);
 
         btn_mail = rootview.findViewById(R.id.btn_main_mail);
         btn_mail.setOnClickListener(new View.OnClickListener() {
@@ -112,14 +109,17 @@ public class main_product extends android.support.v4.app.Fragment {
                     Log.d("main recycler test", ""+response.code());
                     if (response.isSuccessful()) {
                         ArrayList<MainProductResult> result = response.body();
-                        Log.d("maintest", "메인 상품 로딩성공" + result.get(0).getProductId());
-                        for (int i = 0 ; i < result.size() ; i++){
-                            name = result.get(i).getProductName();
-                            price = result.get(i).getProductPrice();
-                            productid = result.get(i).getProductId();
-                            mAdapter.mDataset.add(new Recycler_product_main(R.color.grey8 , name , String.valueOf(price), productid));
-                        }
+                        mAdapter.mDataset.addAll(result);
                         mAdapter.notifyDataSetChanged();
+                        Log.d("maintest", "메인 상품 로딩성공" + result.get(0).getProductId());
+//                        for (int i = 0 ; i < result.size() ; i++){
+//                            product_image = result.get(i).
+//                            name = result.get(i).getProductName();
+//                            price = result.get(i).getProductPrice();
+//                            productid = result.get(i).getProductId();
+//
+//                        }
+//                        mAdapter.notifyDataSetChanged();
                     }
                 }
 
@@ -138,7 +138,7 @@ public class main_product extends android.support.v4.app.Fragment {
 
             @Override
             public void onClick(View view, int position) {
-                String pid = mAdapter.mDataset.get(position).getProduct_id();
+                String pid = mAdapter.mDataset.get(position).getProductId();
                 Intent intent_detail = new Intent(getActivity(), ProductDetail.class);
                 intent_detail.putExtra("id",pid);
                 startActivity(intent_detail);

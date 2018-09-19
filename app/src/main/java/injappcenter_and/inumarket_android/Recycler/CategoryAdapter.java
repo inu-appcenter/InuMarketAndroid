@@ -25,8 +25,11 @@ public class CategoryAdapter extends BaseExpandableListAdapter{
     private Context context;
     private Vector<Category_Parent> data;
     private LayoutInflater inflater = null;
+    public ImageView image;
 
-
+    public CategoryAdapter(ImageView imageView){
+        this.image = imageView;
+    }
 
     public CategoryAdapter(Context context, Vector<Category_Parent> data){
         this.data = data;
@@ -80,10 +83,14 @@ public class CategoryAdapter extends BaseExpandableListAdapter{
 
         icon.setImageResource(data.get(groupPosition).getCategory_image());
         name.setText(data.get(groupPosition).getCategory_name());
-        expand.setImageResource(data.get(groupPosition).getExpandbtn());
-
+//        expand.setImageResource(R.drawable.list_updown);
+        convertView.setTag("asdfasdf");
         return convertView;
     }
+//    @Override
+//    public ExpandableListView.OnGroupExpandListener(){
+//
+//    }
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
