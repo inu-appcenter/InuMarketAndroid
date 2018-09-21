@@ -137,14 +137,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             drawerLayout.closeDrawers();
         }
         else if (findViewById(R.id.fragment_Main_product).getVisibility() == View.VISIBLE){
-            long tempTime = System.currentTimeMillis();
-            long intervalTime = tempTime - backPressedTime;
-            if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+//            long tempTime = System.currentTimeMillis();
+//            long intervalTime = tempTime - backPressedTime;
+//            if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
                 super.onBackPressed();
-            } else {
-                backPressedTime = tempTime;
-                Toast.makeText(getApplicationContext(), "버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-            }
+//            } else {
+//                backPressedTime = tempTime;
+//                Toast.makeText(getApplicationContext(), "버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+//            }
         }
     }
 

@@ -106,6 +106,12 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                 Toast.makeText(getApplicationContext(),"자동 로그인 되었습니다.",Toast.LENGTH_SHORT).show();
                                 finish();
                             }
+                            else if (result.getMessage().equals("fail")){
+                                Toast.makeText(getApplicationContext(),"아이디와 비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show();
+                            }
+                            else if (result.getMessage().equals("certification")){
+                                Toast.makeText(getApplicationContext(),"이메일 인증 후 로그인 해주세요.",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                     else {

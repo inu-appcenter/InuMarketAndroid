@@ -30,6 +30,11 @@ public interface RetrofitService {
     login(@Field("id") String id, @Field("passwd") String passwd,@Field("FCM") String FCM);
 
     @FormUrlEncoded
+    @POST("account")
+    public Call<JsonObject>
+    account(@Field("id") String id, @Field("passwd") String pw, @Field("name") String name, @Field("tel") String tel);
+
+    @FormUrlEncoded
     @POST("stateChange/newPassword")
     public Call<forgotpw_Result>
     forgot_pw(@Field("id") String id, @Field("name") String name);
