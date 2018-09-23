@@ -25,51 +25,51 @@ import retrofit2.http.POST;
 public interface RetrofitService {
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("tlogin")
     public Call<LoginResult>
     login(@Field("id") String id, @Field("passwd") String passwd,@Field("FCM") String FCM);
 
     @FormUrlEncoded
-    @POST("account")
+    @POST("taccount")
     public Call<JsonObject>
     account(@Field("id") String id, @Field("passwd") String pw, @Field("name") String name, @Field("tel") String tel);
 
     @FormUrlEncoded
-    @POST("stateChange/newPassword")
+    @POST("tstateChange/newPassword")
     public Call<forgotpw_Result>
     forgot_pw(@Field("id") String id, @Field("name") String name);
 
     @FormUrlEncoded
-    @POST("stateChange/changeTel")
+    @POST("tstateChange/changeTel")
     public Call<JsonObject>
     changeTel(@Field("id") String id, @Field("newTel") String tel);
 
     @FormUrlEncoded
-    @POST("stateChange/changePasswd")
+    @POST("tstateChange/changePasswd")
     public Call<JsonObject>
     changePasswd(@Field("id") String id, @Field("pastPasswd") String pastpw, @Field("newPasswd") String newpw);
 
-    @POST("PSelect/main")
+    @POST("tPSelect/main")
     public Call <ArrayList<MainProductResult>>
     main(@Header("x-access-token") String main_token);
 
     @FormUrlEncoded
-    @POST("PSelect/oneItem")
+    @POST("tPSelect/oneItem")
     public Call<ProductDetailAdapter>
     detail(@Header("x-access-token") String main_token, @Field("productId") String productId);
 
     @FormUrlEncoded
-    @POST("PSelect/searchId")
+    @POST("tPSelect/searchId")
     public Call<ArrayList<searchId>>
     searchId(@Header("x-access-token") String main_token, @Field("seller") String sellerid);
 
     @FormUrlEncoded
-    @POST("PSelect/nonsell")
+    @POST("tPSelect/nonsell")
     public Call<ArrayList<nonSellResult>>
     nonsell(@Header("x-access-token") String main_token, @Field("sellerId") String productId);
 
     @FormUrlEncoded
-    @POST("letter/list")
+    @POST("tletter/list")
     public Call<ArrayList<Letter>>
     letter(@Header("x-access-token") String token, @Field("id") String sellerid);
 //
