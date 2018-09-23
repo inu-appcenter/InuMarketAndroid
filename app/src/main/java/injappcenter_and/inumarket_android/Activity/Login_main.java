@@ -202,13 +202,13 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                 startActivity(intent_pw);
                 break;
             }
-            /* case R.id.btn_login_join:
+             case R.id.btn_login_join:
             {
                 // 회원가입화면으로 전환
-                Intent intent_join = new Intent(getApplicationContext(), join.class);
-                startActivity(intent_join);
+                Intent intent_signup = new Intent(getApplicationContext(), Signup.class);
+                startActivity(intent_signup);
                 break;
-            }*/
+            }
         }
     }
     public void loadlogindata(){

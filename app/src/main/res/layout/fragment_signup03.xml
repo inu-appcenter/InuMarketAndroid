@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_sign3_next"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="다음"
+        android:textSize="20sp"
+        android:textColor="@color/Textgunmetal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"
+        android:background="@drawable/bottom_confirm" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_sign3_next"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        tools:context=".register.Fragment_Signup01">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="44dp"
+            android:textColor="#475058"
+            android:textSize="20sp"
+            android:text="비밀번호 설정하기"
+            android:gravity="center_horizontal"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/signup_step_pw" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Textgunmetal"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="28dp"
+            android:textSize="12sp"
+            android:text="비밀번호 입력" />
+
+        <EditText
+            android:id="@+id/et_signup_step3_password1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:textColor="#4a4a4a"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:paddingStart="14dp"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="입력" />
+
+            <TextView
+                android:id="@+id/txt_signup_step3_less8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:gravity="end"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@color/orangey_red"
+                android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Textgunmetal"
+            android:layout_marginTop="22dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="28dp"
+            android:textSize="12sp"
+            android:text="비밀번호 재입력" />
+
+        <EditText
+            android:id="@+id/et_signup_step3_password2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:textColor="#4a4a4a"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="20dp"
+            android:paddingStart="14dp"
+            android:textSize="16sp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="입력" />
+
+            <TextView
+                android:id="@+id/txt_signup_step3_dif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:text=""
+                android:textColor="@color/orangey_red"
+                android:textSize="12sp"/>
+
+    </LinearLayout>
+</RelativeLayout>

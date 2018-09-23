@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="66dp"
+        android:src="@drawable/signup_done" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="29dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/popup_product_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="103.2dp"
+            android:layout_marginEnd="32.7dp"
+            android:layout_marginStart="32.8dp"
+            android:layout_marginTop="76.5dp"
+            android:gravity="center_horizontal"
+            android:lines="2"
+            android:text="회원가입이 완료되었습니다.\n이메일 인증완료 후 로그인해주세요."
+            android:textColor="@color/Textgunmetal"
+            android:textSize="16.2sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.9dp"
+            android:layout_marginBottom="49.5dp"
+            android:background="@color/white_two"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_sign6_submit"
+            android:layout_width="match_parent"
+            android:layout_height="50.4dp"
+            android:background="#00ffffff"
+            android:text="확인"
+            android:gravity="center"
+            android:textColor="@color/Textgunmetal"
+            android:textSize="14.4sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>
