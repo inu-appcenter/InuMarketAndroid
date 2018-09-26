@@ -168,6 +168,9 @@
         android:text="자동 로그인"
         android:textSize="12sp"
         android:textColor="@color/Textgunmetal"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/checkbox_login"
+        android:button="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_pw" />
 
