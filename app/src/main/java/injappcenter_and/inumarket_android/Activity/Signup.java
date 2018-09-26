@@ -26,7 +26,17 @@ public class Signup extends AppCompatActivity {
 
         initData();
         initView();
+
+
     }
+
+//    @Override
+//    public void onBackPressed(){
+//        if (Fragment_Signup01 == findViewById(R.id.container_signup).getRootView()){
+//            super.onBackPressed();
+//            finish();
+//        }
+//    }
 
     public void initData() {
         fm = getSupportFragmentManager();

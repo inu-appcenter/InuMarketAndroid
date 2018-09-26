@@ -1,11 +1,11 @@
-package injappcenter_and.inumarket_android.Recycler;
+package injappcenter_and.inumarket_android.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ProductDetailAdapter {
+public class ProductDetailRetrofit {
 
     @SerializedName("productImg")
     @Expose

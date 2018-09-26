@@ -53,7 +53,7 @@ public class forgot_pw extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         forgotpw_Result result = response.body();
                         if (result != null) {
-                            if (result.getAns()=="true"){
+                            if (result.getAns().equals("true")){
                                 notcollect_txt.setVisibility(View.INVISIBLE);
                                 Log.d("testpasswd",""+result.getAns());
                                 Adapter_dialog_onebutton dialog = new Adapter_dialog_onebutton(getApplicationContext());

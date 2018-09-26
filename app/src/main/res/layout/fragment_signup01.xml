@@ -84,12 +84,14 @@
             android:id="@+id/checkbox_sign_step1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="@null"
             android:layout_marginStart="38dp"
             android:layout_marginTop="8dp"
-            android:paddingStart="21dp"
             android:text="동의합니다."
+            android:drawablePadding="21dp"
             android:textColor="@color/Textgunmetal"
             android:textSize="16sp"
+            android:drawableStart="@drawable/checkbox_signup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollview_terms" />
 

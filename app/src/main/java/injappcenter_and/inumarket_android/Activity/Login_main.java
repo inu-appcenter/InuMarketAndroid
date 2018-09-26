@@ -147,10 +147,13 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                 if (result != null) {
                                     usertoken = result.getToken();
                                     userTel = result.getTel();
+                                    editor.putString("id",userid);
+                                    editor.commit();
                                     if ((usertoken.length()!=0)&&(loginsuc.equals(result.getMessage()))) {
 
                                         if (!pref_info.getString("token", "").equals(usertoken)){
                                             editor.putString("token",usertoken);
+                                            editor.putString("name",result.getName());
                                             editor.commit();
                                         }
                                         if (!pref_info.getString("tel","").equals(userTel)){

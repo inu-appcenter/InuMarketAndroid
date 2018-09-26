@@ -1,24 +1,19 @@
 package injappcenter_and.inumarket_android.Server;
 
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Model.Letter;
 import injappcenter_and.inumarket_android.Model.LoginResult;
 import injappcenter_and.inumarket_android.Model.MainProductResult;
+import injappcenter_and.inumarket_android.Model.ProductDetailRetrofit;
 import injappcenter_and.inumarket_android.Model.forgotpw_Result;
 import injappcenter_and.inumarket_android.Model.nonSellResult;
 import injappcenter_and.inumarket_android.Model.searchId;
-import injappcenter_and.inumarket_android.Recycler.ProductDetailAdapter;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -55,7 +50,7 @@ public interface RetrofitService {
 
     @FormUrlEncoded
     @POST("tPSelect/oneItem")
-    public Call<ProductDetailAdapter>
+    public Call<ProductDetailRetrofit>
     detail(@Header("x-access-token") String main_token, @Field("productId") String productId);
 
     @FormUrlEncoded
@@ -72,10 +67,10 @@ public interface RetrofitService {
     @POST("tletter/list")
     public Call<ArrayList<Letter>>
     letter(@Header("x-access-token") String token, @Field("id") String sellerid);
-//
-//    @FormUrlEncoded
-//    @POST("report")
-//    public Call
 
+    @FormUrlEncoded
+    @POST("tletter/send")
+    public Call<JsonObject>
+    lettersend(@Field("custId") String custid, @Field("sellerId") String Sellerid, @Field("productId") String productid
+            , @Field("productName") String productname, @Field("category") String category);
 }
-

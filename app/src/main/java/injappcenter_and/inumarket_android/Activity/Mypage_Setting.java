@@ -1,8 +1,11 @@
 package injappcenter_and.inumarket_android.Activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -88,6 +91,20 @@ public class Mypage_Setting extends AppCompatActivity implements View.OnClickLis
                         = new Adapter_dialog(this,"확인을 누르시면\n로그아웃됩니다.");
                 dialog_logout.show();
                 //로그아웃 통신 추가
+                dialog_logout.setOnOkButtonClickListener(new Adapter_dialog.OnOkButtonClickListener() {
+                    @Override
+                    public void onClick() {
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+
+                        editor.commit();
+
+                        Intent intent = new Intent(getApplication(),Login_main.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                });
                 break;
             }
             case R.id.bundle_out:{

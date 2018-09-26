@@ -1,19 +1,14 @@
 package injappcenter_and.inumarket_android.Activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,16 +18,20 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import injappcenter_and.inumarket_android.Config;
+import injappcenter_and.inumarket_android.Model.ProductDetailRetrofit;
 import injappcenter_and.inumarket_android.R;
-import injappcenter_and.inumarket_android.Recycler.ProductDetailAdapter;
 import injappcenter_and.inumarket_android.Retrofit.Singleton;
-import injappcenter_and.inumarket_android.Viewpager.CircleIndicator;
 import injappcenter_and.inumarket_android.Viewpager.PagerAdapter_product;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,9 +43,10 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
     ImageView[] dots;
     LinearLayout pager_indicator;
     private ViewPager viewPager;
-    private List<String> numberList;
+    private ArrayList<String> numberList, Productdata;
     me.relex.circleindicator.CircleIndicator circleIndicator;
     //private CircleIndicator
+    ProductDetailRetrofit result;
     PagerAdapter_product viewPagerAdapter;
     ImageButton btnClosePopup, btnClose;
     PopupWindow pwindo,pwsendindo;
@@ -94,16 +94,34 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         pref = getSharedPreferences("userinfo",MODE_PRIVATE);
         String token = pref.getString("token","");
 
+        viewPager = (ViewPager) findViewById(R.id.viewpager_productdetail_image);
+//        viewPager.setInterval(5000);
+//        viewPager.startAutoScroll();
+        circleIndicator = findViewById(R.id.indicator_productimage);
+        circleIndicator.setViewPager(viewPager);
+
+        Productdata = new ArrayList<>();
+        result = new ProductDetailRetrofit();
+
+        viewPager.addOnPageChangeListener(mOnPageChangeListener);
+
         if ( productid != null) {
             Log.d("token,id", "토큰 받은거 확인" + token);
-            Singleton.retrofit.detail(token,productid).enqueue(new Callback<ProductDetailAdapter>() {
+            Singleton.retrofit.detail(token,productid).enqueue(new Callback<ProductDetailRetrofit>() {
                 @Override
-                public void onResponse(Call<ProductDetailAdapter> call, Response<ProductDetailAdapter> response) {
+                public void onResponse(Call<ProductDetailRetrofit> call, Response<ProductDetailRetrofit> response) {
 
                     if (response.isSuccessful()) {
-                        ProductDetailAdapter result = response.body();
+                        result = response.body();
                         Log.d("detail_lodtest", "상세정보 로딩성공");
 
+                        assert result != null;
+                        numberList = new ArrayList<>();
+                        //numberList.add(result.getProductImg().get(0));
+                        numberList.addAll(result.getProductImg());
+                        viewPagerAdapter = new PagerAdapter_product(getApplicationContext(),numberList);
+                        viewPagerAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+                        viewPager.setAdapter(viewPagerAdapter);
                         sellerid = result.getSellerId();
                         name = result.getProductName();
                         price = result.getProductPrice();
@@ -113,6 +131,10 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                         category = result.getCategory();
                         info = result.getProductInfo();
                         star = result.getProductStar();
+
+                        Productdata.add(name);
+                        Productdata.add(sellerid);
+                        Productdata.add(category);
 
                         intent_seller = new Intent(getApplicationContext(), sellerProduct.class);
                         intent_seller.putExtra("sellerid",sellerid);
@@ -125,33 +147,16 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                         txtmethod.setText("- 거래 방식: "+method);
                         txtcategory.setText("- 카테고리: "+category);
                         txtstate.setText("- 거래 상태: "+state);
+
                     }
                 }
 
                 @Override
-                public void onFailure(Call<ProductDetailAdapter> call, Throwable t) {
+                public void onFailure(Call<ProductDetailRetrofit> call, Throwable t) {
                     Log.d("fail", "안돼");
                 }
             });
         }
-
-        ImageResource = new int[]{
-                R.color.blush_pink,
-                R.color.pale_salmon,
-                R.color.cloudy_blue,
-                R.color.warm_grey
-        };
-
-        viewPagerAdapter = new PagerAdapter_product(getApplicationContext(),ImageResource);
-        viewPager = (ViewPager) findViewById(R.id.viewpager_productdetail_image);
-        viewPager.setAdapter(viewPagerAdapter);
-
-        circleIndicator = findViewById(R.id.indicator_productimage);
-        circleIndicator.setViewPager(viewPager);
-
-        viewPagerAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-        viewPager.addOnPageChangeListener(mOnPageChangeListener);
-
     }
 
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -211,7 +216,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                 break;
             }
 
-            case R.id.btn_popup_close: case R.id.btn_popup_ok: {
+            case R.id.btn_popup_close: {
                 pwindo.dismiss();
                 break;
             }
@@ -219,17 +224,48 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
     }
 
+
     private void initiatePopupWindow() {
         try {
             View layout = getLayoutInflater().inflate(R.layout.popup_product_letter_sent,null);
-
             pwindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
             pwindo.setAnimationStyle(-1);
+
+            Glide.with(getApplicationContext()).load(Config.serverUrl + "imgload/" + numberList.get(0))
+                    .into((ImageView) layout.findViewById(R.id.image_popup_productimage));
+
+            final String username = pref.getString("name","");
+            String usertel = pref.getString("tel","");
+            final String userid = pref.getString("id","");
+
+            TextView productinfo = (TextView)layout.findViewById(R.id.txt_popup_productinfo);
+            productinfo.setText("상품명: "+Productdata.get(0)+"\n\n내 이름: "+username+"\n전화번호: "+usertel);
             btnClosePopup = layout.findViewById(R.id.btn_popup_close);
             btnClosePopup.setOnClickListener(this);
             Button btnOkPopup = layout.findViewById(R.id.btn_popup_ok);
-            btnOkPopup.setOnClickListener(this);
+            btnOkPopup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Singleton.retrofit.lettersend(userid,Productdata.get(1), productid, Productdata.get(0),Productdata.get(2))
+                            .enqueue(new Callback<JsonObject>() {
+                                @Override
+                                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                                    assert response.body() != null;
+                                    JsonObject result = response.body();
+                                    Log.d("lettersendtest",""+result);
+                                    if(String.valueOf(result.get("ans")).equals("true")){
+                                        Toast.makeText(getApplicationContext(),"쪽지가 전송되었습니다.",Toast.LENGTH_SHORT);
+                                        pwindo.dismiss();
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                                }
+                            });
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -242,6 +278,15 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             pwsendindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
             pwsendindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
             pwsendindo.setAnimationStyle(-1);
+            Glide.with(getApplicationContext()).load(Config.serverUrl + "imgload/" + numberList.get(0))
+                    .into((ImageView) layout.findViewById(R.id.image_popup_letter_productimage));
+
+            String username = pref.getString("name","");
+            String usertel = pref.getString("tel","");
+
+            TextView product = layout.findViewById(R.id.txt_popup_letter_productinfo);
+            product.setText("상품명: "+Productdata.get(0)+"\n\n내 이름: "+username+"\n전화번호: "+usertel);
+
             btnClose = layout.findViewById(R.id.btn_popup_letter_close);
             btnClose.setOnClickListener(this);
             TextView txtcencle = layout.findViewById(R.id.txt_popup_letter_cancle);

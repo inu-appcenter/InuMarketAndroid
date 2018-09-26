@@ -10,12 +10,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import com.bumptech.glide.Glide;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import injappcenter_and.inumarket_android.Config;
 import injappcenter_and.inumarket_android.R;
 public class PagerAdapter_product extends PagerAdapter {
     Context context;
-    private int[] mResources;
+    private ArrayList<String> mResources;
 
-    public PagerAdapter_product(Context context, int[] mResources){
+    public PagerAdapter_product(Context context, ArrayList<String> mResources){
         this.mResources = mResources;
         this.context = context;
     }
@@ -25,9 +31,9 @@ public class PagerAdapter_product extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.viewpager_detail_model,container,false);
         ImageView imageView = (ImageView)view.findViewById(R.id.image_viewpager_productimage);
-        imageView.setImageResource(mResources[position]);
+        Glide.with(context).load(Config.serverUrl + "imgload/" + mResources.get(position)).into(imageView);
+        // imageView.setImageResource(Integer.parseInt(mResources.get(position)));
         container.addView(view);
-
         return view;
     }
 
@@ -43,6 +49,6 @@ public class PagerAdapter_product extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mResources.length;
+        return mResources.size();
     }
 }
