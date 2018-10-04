@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26.9dp"
+        android:layout_marginTop="11.1dp"
+        android:text="상품 설명"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/product_upload_product_info"
+        android:layout_width="match_parent"
+        android:layout_height="134dp"
+        android:layout_marginStart="19.2dp"
+        android:layout_marginTop="3.5dp"
+        android:layout_marginEnd="19.8dp"
+        android:background="@drawable/multitext"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="   입력"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26.9dp"
+        android:layout_marginTop="15dp"
+        android:text="거래 방식"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_upload_product_info" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/methodCons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19.2dp"
+        android:layout_marginTop="3.7dp"
+        android:layout_marginEnd="19.8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <RadioGroup
+            android:id="@+id/methodGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_btn_meeting"
+                android:layout_width="161dp"
+                android:layout_height="48dp"
+                android:background="@drawable/radio_button_meeting"
+                android:button="@null"
+                android:gravity="center"
+                android:text="직거래"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/radio_btn_postbox"
+                android:layout_width="161dp"
+                android:layout_height="48dp"
+                android:background="@drawable/radio_button_postbox"
+                android:button="@null"
+                android:gravity="center"
+                android:text="배송"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radio_btn_meeting"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RadioGroup>
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/meeting_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="12.8dp"
+        android:text="직거래 장소"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/methodCons"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="272dp" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/meeting_editTv"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="3.5dp"
+        android:layout_marginEnd="19.8dp"
+        android:backgroundTint="@color/cloudy_blue"
+        android:ems="10"
+        android:hint="입력"
+        android:inputType="textPersonName"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meeting_tv" />
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

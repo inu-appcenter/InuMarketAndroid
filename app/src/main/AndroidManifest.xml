@@ -19,6 +19,7 @@
             android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".Activity.my_product"/>
         <activity android:name=".Activity.forgot_pw" />
+        <activity android:name=".Activity.product_upload"/>
         <activity android:name=".Activity.Start_inum">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

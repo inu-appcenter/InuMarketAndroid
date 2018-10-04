@@ -22,6 +22,7 @@ import javax.security.auth.callback.Callback;
 import injappcenter_and.inumarket_android.Activity.Mypage_Setting;
 import injappcenter_and.inumarket_android.Activity.letter_form;
 import injappcenter_and.inumarket_android.Activity.my_product;
+import injappcenter_and.inumarket_android.Activity.product_upload;
 import injappcenter_and.inumarket_android.Model.Letter;
 import injappcenter_and.inumarket_android.Model.searchId;
 import injappcenter_and.inumarket_android.R;
@@ -114,6 +115,17 @@ public class Fragment_mypage_Drawer extends android.support.v4.app.Fragment {
                 drawer.closeDrawer(Gravity.END);
             }
         });
+
+        ConstraintLayout upload_btn = (ConstraintLayout) Drawer.findViewById(R.id.bundle_product_regist);
+
+        upload_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),product_upload.class);
+                startActivity(intent);
+            }
+        });
+
         return Drawer;
     }
 }
