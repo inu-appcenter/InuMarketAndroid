@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +21,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Activity.ProductDetail;
-import injappcenter_and.inumarket_android.Model.MainProductResult;
+import injappcenter_and.inumarket_android.Model.CategoryProduct;
 import injappcenter_and.inumarket_android.R;
-import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
+import injappcenter_and.inumarket_android.Recycler.CategoryRecyclerAdapter;
+import injappcenter_and.inumarket_android.Retrofit.Singleton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Fragment_category_book_product extends Fragment {
     RecyclerView recyclerView;
-    Mainproduct_Adapter mAdapter;
-    ArrayList<MainProductResult> list = new ArrayList<>();
+    CategoryRecyclerAdapter mAdapter;
 //    Spinner spinner;
 //    String[] spinneritem = {"최신 상품", "높은 가격", "낮은 가격"};
 
@@ -74,11 +78,35 @@ public class Fragment_category_book_product extends Fragment {
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_category_book);
         recyclerView.setHasFixedSize(true);
-        mAdapter = new Mainproduct_Adapter(list);
-        mAdapter.setItemClick(new Mainproduct_Adapter.ItemClick() {
+
+        String fullcategory = parent+child;
+        Log.d("fullcategory", fullcategory);
+
+        Singleton.retrofit.category(fullcategory).enqueue(new Callback<ArrayList<CategoryProduct>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CategoryProduct>> call, Response<ArrayList<CategoryProduct>> response) {
+                if (response.isSuccessful()){
+                    ArrayList<CategoryProduct> result = response.body();
+                    mAdapter.mDataset.addAll(result);
+                    mAdapter.notifyDataSetChanged();
+                    Log.d("category_product_load", "카테고리별 상품 검색 로딩성공" +result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<CategoryProduct>> call, Throwable t) {
+
+            }
+        });
+
+        mAdapter = new CategoryRecyclerAdapter();
+        mAdapter.setItemClick(new CategoryRecyclerAdapter.ItemClick() {
+
             @Override
             public void onClick(View view, int position) {
+                String pid = mAdapter.mDataset.get(position).getProductId();
                 Intent intent_detail = new Intent(getActivity(), ProductDetail.class);
+                intent_detail.putExtra("id",pid);
                 startActivity(intent_detail);
             }
         });
@@ -88,6 +116,8 @@ public class Fragment_category_book_product extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
         return rootview;
     }
 }

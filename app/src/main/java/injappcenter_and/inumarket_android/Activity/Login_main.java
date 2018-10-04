@@ -161,8 +161,8 @@ public class Login_main extends AppCompatActivity implements View.OnClickListene
                                             editor.commit();
                                         }
 
-                                        if (checkBox.isChecked()){
-                                            if ((!saveid.equals(userid))&&(!savepw.equals(userpw))) {
+                                        if ((!saveid.equals(userid))||(!savepw.equals(userpw))){
+                                            if (checkBox.isChecked()) {
                                                 editor.putString("id", userid);
                                                 editor.putString("pw", userpw);
                                                 editor.commit();

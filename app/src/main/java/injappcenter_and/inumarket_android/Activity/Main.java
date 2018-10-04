@@ -1,6 +1,7 @@
 package injappcenter_and.inumarket_android.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import injappcenter_and.inumarket_android.Fragment.Fragment_searchresult;
@@ -25,6 +28,7 @@ import injappcenter_and.inumarket_android.Fragment.main_product;
 import injappcenter_and.inumarket_android.R;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static injappcenter_and.inumarket_android.R.drawable.erase;
 
 public class Main extends AppCompatActivity implements View.OnClickListener{
 
@@ -34,6 +38,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
     private Fragment category,mypage;
     DrawerLayout cDrawer;
     DrawerLayout mDrawer;
+    RelativeLayout layoutsearch;
 
     private final long FINISH_INTERVAL_TIME = 2000;
     private long   backPressedTime = 0;
@@ -53,6 +58,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
         btncategory.setOnClickListener(this);
         btnmypage = findViewById(R.id.btn_main_mypage);
         btnmypage.setOnClickListener(this);
+        layoutsearch = findViewById(R.id.layout_search);
 
         ImageButton closemypage = findViewById(R.id.btn_mypage_closedrawer);
         ImageButton closecategory = findViewById(R.id.btn_category_closedrawer);
@@ -83,21 +89,31 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (hasFocus) {
-                    float mScale = getResources().getDisplayMetrics().density;
-                    int w = 285;
+                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    lp.setMargins(13,0,68,0);
+                    et_search.setLayoutParams(lp);
+                    ImageButton erase = new ImageButton(getApplicationContext());
+                    erase.setImageResource(R.drawable.erase);
 
-                    int cwidth = (int) (w*mScale);
-                    ViewGroup.LayoutParams param = et_search.getLayoutParams();
+                    layoutsearch.setGravity(Gravity.END);
+                    layoutsearch.addView(erase);
 
-                    param.width = cwidth;
-                    et_search.setLayoutParams(param);
+//                    float mScale = getResources().getDisplayMetrics().density;
+//                    int w = 285;
+//
+//                    int cwidth = (int) (w*mScale);
+//                    ViewGroup.LayoutParams param = et_search.getLayoutParams();
+//
+//                    param.width = cwidth;
+//                    et_search.setLayoutParams(param);
 
-                    btn_search_erase.setVisibility(View.VISIBLE);
+                    //btn_search_erase.setVisibility(View.VISIBLE);
                     btn_searchcancle.setVisibility(View.VISIBLE);
                     findViewById(R.id.fragment_Main_product).setVisibility(View.INVISIBLE);
                     et_search.setHint("");
                 }
                 else{
+                    et_search.setHint("찾고있는 상품을 입력하세요");
                     findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
                     findViewById(R.id.btn_main_search_erase).setVisibility(View.INVISIBLE);
                     findViewById(R.id.btn_main_search_cancle).setVisibility(View.INVISIBLE);
@@ -115,9 +131,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
 
                     param.width = MATCH_PARENT;
                     et_search.setLayoutParams(param);
-
+                    et_search.setHint("찾고있는 상품을 입력하세요");
                     et_search.clearFocus();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("search", String.valueOf(et_search.getText()));
+
                     Fragment_searchresult searchproduct = new Fragment_searchresult();
+                    searchproduct.setArguments(bundle);
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragment_Main_product, searchproduct)
                             .addToBackStack(null)
@@ -157,6 +178,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener{
                 et_search.clearFocus();
                 et_search.setVisibility(View.VISIBLE);
                 et_search.setText("");
+                et_search.setHint("찾고있는 상품을 입력하세요");
+
                 findViewById(R.id.fragment_Main_product).setVisibility(View.VISIBLE);
                 InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(et_search.getWindowToken(),0);
