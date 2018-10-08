@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +21,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Activity.ProductDetail;
-import injappcenter_and.inumarket_android.Model.MainProductResult;
+import injappcenter_and.inumarket_android.Model.CategoryProduct;
 import injappcenter_and.inumarket_android.R;
-import injappcenter_and.inumarket_android.Recycler.Mainproduct_Adapter;
+import injappcenter_and.inumarket_android.Recycler.CategoryRecyclerAdapter;
+import injappcenter_and.inumarket_android.Retrofit.Singleton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Fragment_category_electronic_product extends Fragment {
     RecyclerView recyclerView;
-    Mainproduct_Adapter mAdapter;
-    ArrayList<MainProductResult> list = new ArrayList<>();
+    CategoryRecyclerAdapter mAdapter;
 //    Spinner spinner;
 //    String[] spinneritem = {"최신 상품", "높은 가격", "낮은 가격"};
-
     TextView txt_category;
     String parent,child;
 
@@ -58,6 +61,8 @@ public class Fragment_category_electronic_product extends Fragment {
 //
 //            }
 //        });
+        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_category_elec);
+        recyclerView.setHasFixedSize(true);
 
         parent = getArguments().getString("parent","");
         child = getArguments().getString("child","");
@@ -65,13 +70,31 @@ public class Fragment_category_electronic_product extends Fragment {
         txt_category = rootview.findViewById(R.id.txt_category_elec_name);
         txt_category.setText(parent +" - "+ child);
 
-        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView_category_elec);
-        recyclerView.setHasFixedSize(true);
-        mAdapter = new Mainproduct_Adapter(list);
-        mAdapter.setItemClick(new Mainproduct_Adapter.ItemClick() {
+        Singleton.retrofit.category("가전가구").enqueue(new Callback<ArrayList<CategoryProduct>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CategoryProduct>> call, Response<ArrayList<CategoryProduct>> response) {
+                if (response.isSuccessful()){
+                    ArrayList<CategoryProduct> result = response.body();
+                    mAdapter.mDataset.addAll(result);
+                    mAdapter.notifyDataSetChanged();
+                    Log.d("category_product_load", "카테고리별 상품 검색 로딩성공" +result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<CategoryProduct>> call, Throwable t) {
+
+            }
+        });
+
+        mAdapter = new CategoryRecyclerAdapter();
+        mAdapter.setItemClick(new CategoryRecyclerAdapter.ItemClick() {
+
             @Override
             public void onClick(View view, int position) {
+                String pid = mAdapter.mDataset.get(position).getProductId();
                 Intent intent_detail = new Intent(getActivity(), ProductDetail.class);
+                intent_detail.putExtra("id",pid);
                 startActivity(intent_detail);
             }
         });
@@ -81,7 +104,8 @@ public class Fragment_category_electronic_product extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-        return rootview;
+        mAdapter.notifyDataSetChanged();
 
+        return rootview;
     }
 }

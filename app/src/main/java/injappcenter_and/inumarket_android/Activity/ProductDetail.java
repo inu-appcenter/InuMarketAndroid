@@ -117,7 +117,6 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
                         assert result != null;
                         numberList = new ArrayList<>();
-                        //numberList.add(result.getProductImg().get(0));
                         numberList.addAll(result.getProductImg());
                         viewPagerAdapter = new PagerAdapter_product(getApplicationContext(),numberList);
                         viewPagerAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());

@@ -68,17 +68,17 @@ public class main_product extends android.support.v4.app.Fragment {
             }
         });
 
-        spinner.setAdapter(sAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        spinner.setAdapter(sAdapter);
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         pref =getActivity().getSharedPreferences("userinfo",MODE_PRIVATE);
         String token =  pref.getString("token","");
@@ -109,17 +109,12 @@ public class main_product extends android.support.v4.app.Fragment {
                     Log.d("main recycler test", ""+response.code());
                     if (response.isSuccessful()) {
                         ArrayList<MainProductResult> result = response.body();
+                        if (result == null){
+
+                        }
                         mAdapter.mDataset.addAll(result);
                         mAdapter.notifyDataSetChanged();
                         Log.d("maintest", "메인 상품 로딩성공" + result.get(0).getProductId());
-//                        for (int i = 0 ; i < result.size() ; i++){
-//                            product_image = result.get(i).
-//                            name = result.get(i).getProductName();
-//                            price = result.get(i).getProductPrice();
-//                            productid = result.get(i).getProductId();
-//
-//                        }
-//                        mAdapter.notifyDataSetChanged();
                     }
                 }
 

@@ -13,7 +13,8 @@
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity android:name=".Activity.Login_main" />
         <activity android:name=".Activity.Signup"/>
-        <activity android:name=".Activity.Main" />
+        <activity android:name=".Activity.Main"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".Activity.letter_form"/>
         <activity android:name=".Activity.letter_send"
             android:theme="@style/AppTheme.Transparent"/>

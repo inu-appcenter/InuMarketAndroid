@@ -5,10 +5,12 @@ import com.google.gson.JsonObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import injappcenter_and.inumarket_android.Model.CategoryProduct;
 import injappcenter_and.inumarket_android.Model.Letter;
 import injappcenter_and.inumarket_android.Model.LoginResult;
 import injappcenter_and.inumarket_android.Model.MainProductResult;
 import injappcenter_and.inumarket_android.Model.ProductDetailRetrofit;
+import injappcenter_and.inumarket_android.Model.SearchResult;
 import injappcenter_and.inumarket_android.Model.forgotpw_Result;
 import injappcenter_and.inumarket_android.Model.nonSellResult;
 import injappcenter_and.inumarket_android.Model.searchId;
@@ -84,4 +86,13 @@ public interface RetrofitService {
     public Call<JsonObject>
     lettersend(@Field("custId") String custid, @Field("sellerId") String Sellerid, @Field("productId") String productid
             , @Field("productName") String productname, @Field("category") String category);
+
+    @POST("tPSelect/category")
+    public Call<ArrayList<CategoryProduct>>
+    category(@Field("category") String categoryname);
+
+    @FormUrlEncoded
+    @POST("tPSelect/search")
+    public Call<ArrayList<SearchResult>>
+    search(@Field("productName") String productname);
 }
