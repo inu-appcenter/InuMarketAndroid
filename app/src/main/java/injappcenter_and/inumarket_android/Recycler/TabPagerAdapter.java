@@ -20,10 +20,10 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         switch(position){
-            case 0:
+            case 1:
                 BuyTabFragment buyTabFragment = new BuyTabFragment();
                 return buyTabFragment;
-            case 1:
+            case 0:
                 SellTabFragment sellTabFragment = new SellTabFragment();
                 return sellTabFragment;
             default:

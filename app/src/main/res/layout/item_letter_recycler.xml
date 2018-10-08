@@ -9,47 +9,86 @@
     android:id="@+id/letter_Rv_Vc">
 
 
-    <ImageView
-        android:id="@+id/letter_Rv_Iv"
-        android:layout_width="38dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/letter_Rv_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:text="data.name"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/letter_Rv_Iv"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/letter_Rv_Rb"
-        android:layout_width="50dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/letter_Rv_Db"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/letter_read" />
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/letter_Rv_Db"
-        android:layout_width="50dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="1dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/delete" />
+        <TextView
+            android:id="@+id/selled_Text"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#90000000"
+            android:gravity="center"
+            android:text="판매 완료"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/letter_Rv_Iv"
+            android:layout_width="38dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/letter_Rv_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:text="data.name"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/letter_Rv_Iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/letter_open_iv"
+            android:layout_width="50dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/list_up" />
+
+        <!--<ImageButton
+            android:id="@+id/letter_Rv_Rb"
+            android:layout_width="50dp"
+            android:layout_height="52dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toStartOf="@+id/letter_Rv_Db"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/letter_read" />
+
+        <ImageButton
+            android:id="@+id/letter_Rv_Db"
+            android:layout_width="50dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="1dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/delete" />-->
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
 
 </LinearLayout>

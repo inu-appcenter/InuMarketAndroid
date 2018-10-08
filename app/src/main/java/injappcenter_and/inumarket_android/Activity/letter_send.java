@@ -38,7 +38,7 @@ public class letter_send extends AppCompatActivity {
         backButton = (Button) findViewById(R.id.back_btn);
         infoText = (TextView) findViewById(R.id.info_text);
 
-        infoText.setText(name + "\n" + "전화번호 : :"+tel);
+        infoText.setText("이름 : "+name + "\n" + "전화번호 : :"+tel);
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override

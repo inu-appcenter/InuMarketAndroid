@@ -2,6 +2,7 @@ package injappcenter_and.inumarket_android.Server;
 
 import com.google.gson.JsonObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import injappcenter_and.inumarket_android.Model.Letter;
@@ -67,6 +68,16 @@ public interface RetrofitService {
     @POST("tletter/list")
     public Call<ArrayList<Letter>>
     letter(@Header("x-access-token") String token, @Field("id") String sellerid);
+
+    @FormUrlEncoded
+    @POST("tletter/buyList")
+    public Call<ArrayList<Letter>>
+    buyLetterList(@Header("x-access-token") String token, @Field("id") String userId);
+
+    @FormUrlEncoded
+    @POST("tletter/sellList")
+    public Call<ArrayList<Letter>>
+    sellLetterList(@Header("x-access-token") String token, @Field("id") String userId);
 
     @FormUrlEncoded
     @POST("tletter/send")

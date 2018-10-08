@@ -5,18 +5,18 @@ public class letterDataHeader {
     private String senderName;
     private String senderTel;
     private String category;
-    private boolean letterRead;
+    private boolean isSelled;
     private int type;
     private letterDataHeader letterDataChild;
 
 
 
-    public letterDataHeader(String productName, String senderName, String senderTel, String category, boolean letterRead, int type, letterDataHeader letterDataChild) {
+    public letterDataHeader(String productName, String senderName, String senderTel, String category, boolean isSelled, int type, letterDataHeader letterDataChild) {
         this.productName = productName;
         this.senderName = senderName;
         this.senderTel = senderTel;
         this.category = category;
-        this.letterRead = letterRead;
+        this.isSelled = isSelled;
         this.type = type;
 
         this.letterDataChild = letterDataChild;
@@ -54,12 +54,12 @@ public class letterDataHeader {
         this.category = category;
     }
 
-    public boolean isLetterRead() {
-        return letterRead;
+    public boolean isSelled() {
+        return isSelled;
     }
 
-    public void setLetterRead(boolean letterRead) {
-        this.letterRead = letterRead;
+    public void setSelled(boolean isSelled) {
+        this.isSelled = isSelled;
     }
 
     public int getType() {

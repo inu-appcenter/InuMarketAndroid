@@ -59,7 +59,7 @@ public class Fragment_upload_category_main extends Fragment {
             @Override
             public void onClick(View v) {
                 String[] clothCategory = {
-                        "여성의류","남성의류","가방류","기타"
+                        "여성 의류","남성 의류","가방류","기타"
                 };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","의류");
