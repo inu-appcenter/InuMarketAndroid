@@ -24,7 +24,7 @@ public class Fragment_upload_product_detail extends Fragment {
     Button letterSend_Btn;
     TextView activity_textview, activity_bottom_tv, detail_name_tv, detail_price_tv, detail_info_tv, detail_state_tv, detail_method_tv, detail_place_tv, detail_category_tv;
     ArrayList<String> sendPhotoList = new ArrayList<String>();
-    String sendCategory,sendName,sendState,sendPrice,sendinfo,sendmethod,sendPlace;
+    String sendCategory,sendName,sendState,sendPrice,sendinfo,sendmethod,sendPlace,category;
 
 
     public Fragment_upload_product_detail(){
@@ -48,7 +48,8 @@ public class Fragment_upload_product_detail extends Fragment {
         add_product_btn = getActivity().findViewById(R.id.next_btn);
 
         sendPhotoList = getArguments().getStringArrayList("photo");
-        sendCategory = getArguments().getString("category");
+        sendCategory = getArguments().getString("sendCategory");
+        category = getArguments().getString("category");
         sendName = getArguments().getString("name");
         sendState = getArguments().getString("state");
         sendPrice = getArguments().getString("price");
@@ -61,10 +62,10 @@ public class Fragment_upload_product_detail extends Fragment {
         detail_name_tv.setText(sendName);
         detail_price_tv.setText(sendPrice);
         detail_info_tv.setText(sendinfo);
-        detail_state_tv.setText(sendState);
-        detail_method_tv.setText(sendmethod);
-        detail_place_tv.setText(sendPlace);
-        detail_category_tv.setText(sendCategory);
+        detail_state_tv.setText("- 상품 상태 : "+sendState);
+        detail_method_tv.setText("- 거래 방식 : "+sendmethod);
+        detail_place_tv.setText("- 거래 장소 : "+sendPlace);
+        detail_category_tv.setText("- 카테고리 : "+category);
         letterSend_Btn.setVisibility(View.INVISIBLE);
 
         add_product_btn.setOnClickListener(new View.OnClickListener() {

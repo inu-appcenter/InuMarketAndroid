@@ -18,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 
 public interface RetrofitService {
@@ -95,4 +96,11 @@ public interface RetrofitService {
     @POST("tPSelect/search")
     public Call<ArrayList<SearchResult>>
     search(@Field("productName") String productname);
+
+    @FormUrlEncoded
+    @Multipart
+    @POST("tPupload")
+    public Call<JsonObject>
+    productUpload(@Field("productName") String productName, @Field("productState") String productState, @Field("productPrice") String productPrice,@Field("cateogry") String category,
+                  @Field("productInfo") String productInfo, @Field("method") String method, @Field("place") String place,@Field("id") String id);
 }

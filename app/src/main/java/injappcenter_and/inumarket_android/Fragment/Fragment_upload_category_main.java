@@ -46,9 +46,15 @@ public class Fragment_upload_category_main extends Fragment {
                         "12호관","15호관","16호관","19호관","22호관",
                         "27호관","28호관","29호관"
                 };
+                String[] sendCategory = {
+                        "책2호관","책3호관","책4호관","책5호관","책6호관","책7호관","책8호관","책9호관",
+                        "책12호관","책15호관","책16호관","책19호관","책22호관",
+                        "책27호관","책28호관","책29호관"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","책");
                 bundle.putStringArray("category",bookCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);
@@ -61,9 +67,13 @@ public class Fragment_upload_category_main extends Fragment {
                 String[] clothCategory = {
                         "여성 의류","남성 의류","가방류","기타"
                 };
+                String[] sendCategory={
+                        "의류여성의류","의류남성의류","의류가방류","의류"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","의류");
                 bundle.putStringArray("category",clothCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);
@@ -77,9 +87,14 @@ public class Fragment_upload_category_main extends Fragment {
                         "컴퓨터","스마트폰","태블릿","TV / 모니터","책상",
                         "의자","매트리스","기타"
                 };
+                String[] sendCategory={
+                        "가전가구컴퓨터","가전가구스마트폰","가전가구태블릿","가전가구TV모니터","가전가구책상",
+                        "가전가구의자","가전가구매트리스","가전가구"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","가전 / 가구");
                 bundle.putStringArray("category",electricCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);
@@ -92,9 +107,13 @@ public class Fragment_upload_category_main extends Fragment {
                 String[] etcCategory = {
                         "생활/사무","기타"
                 };
+                String[] sendCategory={
+                        "잡화생활사무","잡화"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","잡화");
                 bundle.putStringArray("category",etcCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);
@@ -108,9 +127,13 @@ public class Fragment_upload_category_main extends Fragment {
                 String[] roomCategory = {
                         "원룸","투룸","복층","기타"
                 };
+                String[] sendCategory={
+                        "자취방원룸","자취방투룸","자취방복층","자취방기타"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","자취방");
                 bundle.putStringArray("category",roomCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);
@@ -123,9 +146,13 @@ public class Fragment_upload_category_main extends Fragment {
                 String[] ticketCategory = {
                         "학생식당","제 1 기숙사","제 2 기숙사"
                 };
+                String[] sendCategory={
+                        "식권학생식당","식권제1기숙사","식권제2기숙사"
+                };
                 Bundle bundle = new Bundle();
                 bundle.putString("middle","식권");
                 bundle.putStringArray("category",ticketCategory);
+                bundle.putStringArray("sendCategory",sendCategory);
                 newFrag.setArguments(bundle);
                 transaction.replace(R.id.upload_frameLayout,newFrag);
                 transaction.addToBackStack(null);

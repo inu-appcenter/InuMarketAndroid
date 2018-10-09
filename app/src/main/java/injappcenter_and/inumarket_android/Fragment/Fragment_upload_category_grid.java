@@ -40,13 +40,14 @@ public class Fragment_upload_category_grid extends android.support.v4.app.Fragme
 
 
             String[] category = getArguments().getStringArray("category");
+            String[] sendCategory = getArguments().getStringArray("sendCategory");
             String middle = getArguments().getString("middle");
 
 
             TextView middletv = (TextView) cg.findViewById(R.id.middleCategory);
             middletv.setText(middle);
             uploadCategoryGridAdapter GA = new uploadCategoryGridAdapter(getActivity(),transaction,
-                    category,middle);
+                    category,middle,sendCategory);
 
             GridView gv = (GridView) cg.findViewById(R.id.category_grid);
             gv.setAdapter(GA);
