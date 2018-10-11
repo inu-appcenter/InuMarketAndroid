@@ -48,7 +48,7 @@ public class product_upload extends FragmentActivity {
         TedPermission.with(this)
                 .setPermissionListener(permissionlistener)
                 .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission] ")
-                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
                 .check();
 
 

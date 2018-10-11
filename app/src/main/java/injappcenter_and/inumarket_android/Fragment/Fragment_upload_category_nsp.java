@@ -16,7 +16,6 @@ import injappcenter_and.inumarket_android.R;
 public class Fragment_upload_category_nsp extends android.support.v4.app.Fragment {
     ConstraintLayout nsp;
     ConstraintLayout cl_Btn;
-    String category;
     String sendCategory;
     TextView warningText;
     EditText productNameEdit;
@@ -35,8 +34,7 @@ public class Fragment_upload_category_nsp extends android.support.v4.app.Fragmen
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
-        category = getArguments().getString("category");
-        sendCategory = getArguments().getString("sendCategory");
+        sendCategory = getArguments().getString("category");
 
         final Fragment newFrag = new Fragment_upload_category_imp();
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -67,8 +65,7 @@ public class Fragment_upload_category_nsp extends android.support.v4.app.Fragmen
                 }
                 else{
                     Bundle bundle = new Bundle();
-                    bundle.putString("category",category);
-                    bundle.putString("sendCategory",sendCategory);
+                    bundle.putString("category",sendCategory);
                     bundle.putString("name",productName);
                     bundle.putString("state",productState);
                     bundle.putString("price",productPrice);

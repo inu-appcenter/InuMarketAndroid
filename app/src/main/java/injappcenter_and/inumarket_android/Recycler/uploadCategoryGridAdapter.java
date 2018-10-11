@@ -16,19 +16,17 @@ import injappcenter_and.inumarket_android.R;
 public class uploadCategoryGridAdapter extends BaseAdapter {
     private Context context;
     private final String category[];
-    private final String sendCategory[];
     private FragmentTransaction Frag;
     private final String middle;
     LayoutInflater inf;
 
 
 
-    public uploadCategoryGridAdapter(Context context, FragmentTransaction Frag, String[] category, String middle, String[] sendCategory){
+    public uploadCategoryGridAdapter(Context context, FragmentTransaction Frag, String[] category, String middle){
         this.context = context;
         this.Frag = Frag;
         this.category = category;
         this.middle = middle;
-        this.sendCategory = sendCategory;
     }
 
 
@@ -66,8 +64,7 @@ public class uploadCategoryGridAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("category",middle+"/"+category[position]);
-                    bundle.putString("sendCateogry",sendCategory[position]);
+                    bundle.putString("category",middle+category[position]);
                     newFrag.setArguments(bundle);
                     Frag.replace(R.id.upload_frameLayout,newFrag);
                     Frag.addToBackStack(null);

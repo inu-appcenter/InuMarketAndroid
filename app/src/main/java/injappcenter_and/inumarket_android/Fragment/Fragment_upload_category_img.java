@@ -27,15 +27,14 @@ public class Fragment_upload_category_img extends Fragment {
     uploadImgRecyclerAdapter uIRv = new uploadImgRecyclerAdapter();
     ArrayList<Uri> addUriList = new ArrayList<Uri>();
     ArrayList<String> sendPhotoList = new ArrayList<String>();
-    String sendCategory,sendName,sendState,sendPrice,sendinfo,sendmethod,sendPlace,category;
+    String sendCategory,sendName,sendState,sendPrice,sendinfo,sendmethod,sendPlace;
 
 
 
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
-        category = getArguments().getString("category");
-        sendCategory = getArguments().getString("sendCategory");
+        sendCategory = getArguments().getString("category");
         sendName = getArguments().getString("name");
         sendState = getArguments().getString("state");
         sendPrice = getArguments().getString("price");
@@ -103,8 +102,7 @@ public class Fragment_upload_category_img extends Fragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("category",category);
-                bundle.putString("sendCategory",sendCategory);
+                bundle.putString("category",sendCategory);
                 bundle.putString("name",sendName);
                 bundle.putString("state",sendState);
                 bundle.putString("price",sendPrice);
